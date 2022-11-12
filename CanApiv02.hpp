@@ -1,6 +1,23 @@
 #include "CANApi/CANHelper.hpp"
 namespace CANHelper::Messages
 {
+#ifdef USE_MSG_Telemetry_SystemStatusMessages
+#define CAN_ID_Telemetry_SystemStatusMessages 0x111
+#define CAN_DLC_Telemetry_SystemStatusMessages 8
+	namespace Telemetry
+	{
+		struct _SystemStatusMessages : public Messages::CANMsg {
+			struct canData
+			{
+				float Power;
+				float Flag;
+			} __attribute__((aligned(8)));
+			canData data;
+			_SystemStatusMessages() : CANMsg(CAN_ID_Telemetry_SystemStatusMessages, CAN_DLC_Telemetry_SystemStatusMessages) { }
+		};
+	}
+	void processMessage(Telemetry::_SystemStatusMessages& msg);
+#endif
 #ifdef USE_MSG_Testbed_TestbedEnvirocanIno1
 #define CAN_ID_Testbed_TestbedEnvirocanIno1 0x1B1
 #define CAN_DLC_Testbed_TestbedEnvirocanIno1 8
