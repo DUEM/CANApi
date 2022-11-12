@@ -1,10 +1,15 @@
-#include "CanApiv02.hpp"
+#include "CANApi/CANApi/CanApiv02.hpp"
 namespace CANHelper
 {
 	void CanMsgHandler::DispatchMsg(can_frame msg)
 	{
 		switch(msg.can_id)
 		{
+#ifdef USE_MSG_Telemetry_SystemStatusMessages
+		case 0x111:
+			Messages::processMessage((Messages::Telemetry::_SystemStatusMessages&)msg);
+			break;
+#endif
 #ifdef USE_MSG_Testbed_TestbedEnvirocanIno1
 		case 0x1B1:
 			Messages::processMessage((Messages::Testbed::_TestbedEnvirocanIno1&)msg);
