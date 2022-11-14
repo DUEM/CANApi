@@ -1,3 +1,5 @@
+#ifndef CanApiv02_INCLUDE_GUARD
+#define CanApiv02_INCLUDE_GUARD
 #include "CANHelper.hpp"
 namespace CANHelper::Messages
 {
@@ -364,3 +366,4 @@ namespace CANHelper::Messages
 	void processAll(CANMsg& msg);
 #endif
 }
+#endif
