@@ -11,8 +11,11 @@ namespace CANHelper::Messages
 		struct _SystemStatusMessages : public Messages::CANMsg {
 			struct canData
 			{
-				float Power;
-				float Flag;
+				uint8_t Power;
+				uint8_t WritingToSd;
+				uint8_t GpsTimeObtained;
+				uint8_t LoadedConfig;
+				uint8_t Flag;
 			} __attribute__((aligned(8)));
 			canData data;
 			_SystemStatusMessages() : CANMsg(CAN_ID_Telemetry_SystemStatusMessages, CAN_DLC_Telemetry_SystemStatusMessages) { }
