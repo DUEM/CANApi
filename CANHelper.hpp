@@ -29,5 +29,6 @@ namespace CANHelper
         void read(); //should be in loop
         void testRead(can_frame& testFrame);
 		void send(Messages::CANMsg& toSend);
+        void send(can_frame& toSend);
 	};
 }
