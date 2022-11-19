@@ -11,7 +11,7 @@ namespace CANHelper::Messages
 		struct _Item : public Messages::CANMsg {
 			struct canData
 			{
-				datatype Byte0
+				datatype Byte0;
 			} __attribute__((aligned(8)));
 			canData data;
 			_Item() : CANMsg(CAN_ID_Source_Item, CAN_DLC_Source_Item) { }
@@ -27,14 +27,14 @@ namespace CANHelper::Messages
 		struct _TimeAndFix : public Messages::CANMsg {
 			struct canData
 			{
-				uint8_t GpsHour
-				uint8_t GpsMinute
-				uint8_t GpsSeconds
-				uint8_t GpsDay
-				uint8_t GpsMonth
-				uint8_t GpsYear
-				uint8_t GpsFix
-				uint8_t GpsFixquality
+				uint8_t GpsHour;
+				uint8_t GpsMinute;
+				uint8_t GpsSeconds;
+				uint8_t GpsDay;
+				uint8_t GpsMonth;
+				uint8_t GpsYear;
+				uint8_t GpsFix;
+				uint8_t GpsFixquality;
 			} __attribute__((aligned(8)));
 			canData data;
 			_TimeAndFix() : CANMsg(CAN_ID_Telemetry_TimeAndFix, CAN_DLC_Telemetry_TimeAndFix) { }
@@ -50,8 +50,8 @@ namespace CANHelper::Messages
 		struct _SpeedAndAngle : public Messages::CANMsg {
 			struct canData
 			{
-				float GpsSpeed
-				float GpsAngle
+				float GpsSpeed;
+				float GpsAngle;
 			} __attribute__((aligned(8)));
 			canData data;
 			_SpeedAndAngle() : CANMsg(CAN_ID_Telemetry_SpeedAndAngle, CAN_DLC_Telemetry_SpeedAndAngle) { }
@@ -67,8 +67,8 @@ namespace CANHelper::Messages
 		struct _Latitude : public Messages::CANMsg {
 			struct canData
 			{
-				float GpsLatitude
-				char GpsLat
+				float GpsLatitude;
+				char GpsLat;
 			} __attribute__((aligned(8)));
 			canData data;
 			_Latitude() : CANMsg(CAN_ID_Telemetry_Latitude, CAN_DLC_Telemetry_Latitude) { }
@@ -84,8 +84,8 @@ namespace CANHelper::Messages
 		struct _Longitude : public Messages::CANMsg {
 			struct canData
 			{
-				float GpsLongitude
-				char GpsLon
+				float GpsLongitude;
+				char GpsLon;
 			} __attribute__((aligned(8)));
 			canData data;
 			_Longitude() : CANMsg(CAN_ID_Telemetry_Longitude, CAN_DLC_Telemetry_Longitude) { }
@@ -101,8 +101,8 @@ namespace CANHelper::Messages
 		struct _AltitudeAndSatellites : public Messages::CANMsg {
 			struct canData
 			{
-				float GpsAltitude
-				uint8_t GpsSatellites
+				float GpsAltitude;
+				uint8_t GpsSatellites;
 			} __attribute__((aligned(8)));
 			canData data;
 			_AltitudeAndSatellites() : CANMsg(CAN_ID_Telemetry_AltitudeAndSatellites, CAN_DLC_Telemetry_AltitudeAndSatellites) { }
@@ -118,14 +118,14 @@ namespace CANHelper::Messages
 		struct _SystemStatusMessages : public Messages::CANMsg {
 			struct canData
 			{
-				uint8_t Power
-				uint8_t WritingToSd
-				uint8_t GpsTimeObtained
-				uint8_t LoadedConfig
-				uint8_t Flag
-				uint8_t Spare1
-				uint8_t Spare2
-				uint8_t Spare3
+				uint8_t Power;
+				uint8_t WritingToSd;
+				uint8_t GpsTimeObtained;
+				uint8_t LoadedConfig;
+				uint8_t Flag;
+				uint8_t Spare1;
+				uint8_t Spare2;
+				uint8_t Spare3;
 			} __attribute__((aligned(8)));
 			canData data;
 			_SystemStatusMessages() : CANMsg(CAN_ID_Telemetry_SystemStatusMessages, CAN_DLC_Telemetry_SystemStatusMessages) { }
@@ -141,8 +141,8 @@ namespace CANHelper::Messages
 		struct _TestbedEnvirocanIno1 : public Messages::CANMsg {
 			struct canData
 			{
-				float TempDegC
-				float Humidity
+				float TempDegC;
+				float Humidity;
 			} __attribute__((aligned(8)));
 			canData data;
 			_TestbedEnvirocanIno1() : CANMsg(CAN_ID_Testbed_TestbedEnvirocanIno1, CAN_DLC_Testbed_TestbedEnvirocanIno1) { }
@@ -158,8 +158,8 @@ namespace CANHelper::Messages
 		struct _TestbedEnvirocanIno2 : public Messages::CANMsg {
 			struct canData
 			{
-				float HeatIndexDegC
-				int32 LdrReading
+				float HeatIndexDegC;
+				int32 LdrReading;
 			} __attribute__((aligned(8)));
 			canData data;
 			_TestbedEnvirocanIno2() : CANMsg(CAN_ID_Testbed_TestbedEnvirocanIno2, CAN_DLC_Testbed_TestbedEnvirocanIno2) { }
@@ -175,8 +175,8 @@ namespace CANHelper::Messages
 		struct _SpeedValCurrVal : public Messages::CANMsg {
 			struct canData
 			{
-				float DriverSetSpeed
-				float DriverSetCurrent
+				float DriverSetSpeed;
+				float DriverSetCurrent;
 			} __attribute__((aligned(8)));
 			canData data;
 			_SpeedValCurrVal() : CANMsg(CAN_ID_DriverControls_SpeedValCurrVal, CAN_DLC_DriverControls_SpeedValCurrVal) { }
@@ -192,8 +192,8 @@ namespace CANHelper::Messages
 		struct _0Maxbuscurrent : public Messages::CANMsg {
 			struct canData
 			{
-				float Zero
-				float MaxBusCurrent
+				float Zero;
+				float MaxBusCurrent;
 			} __attribute__((aligned(8)));
 			canData data;
 			_0Maxbuscurrent() : CANMsg(CAN_ID_DriverControls_0Maxbuscurrent, CAN_DLC_DriverControls_0Maxbuscurrent) { }
@@ -209,8 +209,8 @@ namespace CANHelper::Messages
 		struct _IdentificationInfo : public Messages::CANMsg {
 			struct canData
 			{
-				uint32_t SerialNumber
-				char[4] TritiumId
+				uint32_t SerialNumber;
+				char[4] TritiumId;
 			} __attribute__((aligned(8)));
 			canData data;
 			_IdentificationInfo() : CANMsg(CAN_ID_Tritium_IdentificationInfo, CAN_DLC_Tritium_IdentificationInfo) { }
@@ -226,9 +226,9 @@ namespace CANHelper::Messages
 		struct _StausInformation : public Messages::CANMsg {
 			struct canData
 			{
-				uint16_t ActiveMotor
-				uint16_t ErrorFlags
-				uint16_t LimitFlags
+				uint16_t ActiveMotor;
+				uint16_t ErrorFlags;
+				uint16_t LimitFlags;
 			} __attribute__((aligned(8)));
 			canData data;
 			_StausInformation() : CANMsg(CAN_ID_Tritium_StausInformation, CAN_DLC_Tritium_StausInformation) { }
@@ -244,8 +244,8 @@ namespace CANHelper::Messages
 		struct _BusMeasurement : public Messages::CANMsg {
 			struct canData
 			{
-				float Buscurrent
-				float Busvoltage
+				float Buscurrent;
+				float Busvoltage;
 			} __attribute__((aligned(8)));
 			canData data;
 			_BusMeasurement() : CANMsg(CAN_ID_Tritium_BusMeasurement, CAN_DLC_Tritium_BusMeasurement) { }
@@ -261,8 +261,8 @@ namespace CANHelper::Messages
 		struct _VelocityMSRpm : public Messages::CANMsg {
 			struct canData
 			{
-				float Vehiclevelocity
-				float Motorvelocity
+				float Vehiclevelocity;
+				float Motorvelocity;
 			} __attribute__((aligned(8)));
 			canData data;
 			_VelocityMSRpm() : CANMsg(CAN_ID_Tritium_VelocityMSRpm, CAN_DLC_Tritium_VelocityMSRpm) { }
@@ -278,8 +278,8 @@ namespace CANHelper::Messages
 		struct _PhaseCurrent : public Messages::CANMsg {
 			struct canData
 			{
-				float Phaseacurrent
-				float Phasebcurrent
+				float Phaseacurrent;
+				float Phasebcurrent;
 			} __attribute__((aligned(8)));
 			canData data;
 			_PhaseCurrent() : CANMsg(CAN_ID_Tritium_PhaseCurrent, CAN_DLC_Tritium_PhaseCurrent) { }
@@ -295,8 +295,8 @@ namespace CANHelper::Messages
 		struct _MotorVoltageVector : public Messages::CANMsg {
 			struct canData
 			{
-				float Vectvoltreal
-				float Vectvoltimag
+				float Vectvoltreal;
+				float Vectvoltimag;
 			} __attribute__((aligned(8)));
 			canData data;
 			_MotorVoltageVector() : CANMsg(CAN_ID_Tritium_MotorVoltageVector, CAN_DLC_Tritium_MotorVoltageVector) { }
@@ -312,8 +312,8 @@ namespace CANHelper::Messages
 		struct _MotorCurrentVector : public Messages::CANMsg {
 			struct canData
 			{
-				float Vectcurrreal
-				float Vectcurrimag
+				float Vectcurrreal;
+				float Vectcurrimag;
 			} __attribute__((aligned(8)));
 			canData data;
 			_MotorCurrentVector() : CANMsg(CAN_ID_Tritium_MotorCurrentVector, CAN_DLC_Tritium_MotorCurrentVector) { }
@@ -329,8 +329,8 @@ namespace CANHelper::Messages
 		struct _MotorBackemfVector : public Messages::CANMsg {
 			struct canData
 			{
-				float Backemfreal
-				float Backemfimag
+				float Backemfreal;
+				float Backemfimag;
 			} __attribute__((aligned(8)));
 			canData data;
 			_MotorBackemfVector() : CANMsg(CAN_ID_Tritium_MotorBackemfVector, CAN_DLC_Tritium_MotorBackemfVector) { }
@@ -346,8 +346,8 @@ namespace CANHelper::Messages
 		struct _15165VoltRail : public Messages::CANMsg {
 			struct canData
 			{
-				float Fifteenvsupply
-				float Onesixfivevsupply
+				float Fifteenvsupply;
+				float Onesixfivevsupply;
 			} __attribute__((aligned(8)));
 			canData data;
 			_15165VoltRail() : CANMsg(CAN_ID_Tritium_15165VoltRail, CAN_DLC_Tritium_15165VoltRail) { }
@@ -363,8 +363,8 @@ namespace CANHelper::Messages
 		struct _2512VoltRail : public Messages::CANMsg {
 			struct canData
 			{
-				float Twofivevsupply
-				float Onetwovsupply
+				float Twofivevsupply;
+				float Onetwovsupply;
 			} __attribute__((aligned(8)));
 			canData data;
 			_2512VoltRail() : CANMsg(CAN_ID_Tritium_2512VoltRail, CAN_DLC_Tritium_2512VoltRail) { }
@@ -380,8 +380,8 @@ namespace CANHelper::Messages
 		struct _FanSpeedMeasrement : public Messages::CANMsg {
 			struct canData
 			{
-				float Fanspeed
-				float Fandrive
+				float Fanspeed;
+				float Fandrive;
 			} __attribute__((aligned(8)));
 			canData data;
 			_FanSpeedMeasrement() : CANMsg(CAN_ID_Tritium_FanSpeedMeasrement, CAN_DLC_Tritium_FanSpeedMeasrement) { }
@@ -397,8 +397,8 @@ namespace CANHelper::Messages
 		struct _SinkMotorTemperature : public Messages::CANMsg {
 			struct canData
 			{
-				float Heatsinktemp
-				float Motortemp
+				float Heatsinktemp;
+				float Motortemp;
 			} __attribute__((aligned(8)));
 			canData data;
 			_SinkMotorTemperature() : CANMsg(CAN_ID_Tritium_SinkMotorTemperature, CAN_DLC_Tritium_SinkMotorTemperature) { }
@@ -414,8 +414,8 @@ namespace CANHelper::Messages
 		struct _AirInCpuTemperature : public Messages::CANMsg {
 			struct canData
 			{
-				float Airinlettemp
-				float Processortemp
+				float Airinlettemp;
+				float Processortemp;
 			} __attribute__((aligned(8)));
 			canData data;
 			_AirInCpuTemperature() : CANMsg(CAN_ID_Tritium_AirInCpuTemperature, CAN_DLC_Tritium_AirInCpuTemperature) { }
@@ -431,8 +431,8 @@ namespace CANHelper::Messages
 		struct _AirOutCapTemperature : public Messages::CANMsg {
 			struct canData
 			{
-				float Airoutlettemp
-				float Capacitortemp
+				float Airoutlettemp;
+				float Capacitortemp;
 			} __attribute__((aligned(8)));
 			canData data;
 			_AirOutCapTemperature() : CANMsg(CAN_ID_Tritium_AirOutCapTemperature, CAN_DLC_Tritium_AirOutCapTemperature) { }
@@ -448,8 +448,8 @@ namespace CANHelper::Messages
 		struct _OdoBusAmphours : public Messages::CANMsg {
 			struct canData
 			{
-				float Dcbusamphours
-				float Odometer
+				float Dcbusamphours;
+				float Odometer;
 			} __attribute__((aligned(8)));
 			canData data;
 			_OdoBusAmphours() : CANMsg(CAN_ID_Tritium_OdoBusAmphours, CAN_DLC_Tritium_OdoBusAmphours) { }
@@ -465,9 +465,9 @@ namespace CANHelper::Messages
 		struct _CellVoltages : public Messages::CANMsg {
 			struct canData
 			{
-				uint16_t HighCellVoltage
-				uint16_t LowCellVoltage
-				uint16_t AvgCellVoltage
+				uint16_t HighCellVoltage;
+				uint16_t LowCellVoltage;
+				uint16_t AvgCellVoltage;
 			} __attribute__((aligned(8)));
 			canData data;
 			_CellVoltages() : CANMsg(CAN_ID_Bms_CellVoltages, CAN_DLC_Bms_CellVoltages) { }
@@ -483,12 +483,12 @@ namespace CANHelper::Messages
 		struct _CellTempsDischargeChageCurrentLimit : public Messages::CANMsg {
 			struct canData
 			{
-				int8_t HighTemperature
-				int8_t LowTemperature
-				int8_t AverageTemperature
-				int8_t PackDcl
-				int8_t PackCcl
-				int8_t CurrentLimit
+				int8_t HighTemperature;
+				int8_t LowTemperature;
+				int8_t AverageTemperature;
+				int8_t PackDcl;
+				int8_t PackCcl;
+				int8_t CurrentLimit;
 			} __attribute__((aligned(8)));
 			canData data;
 			_CellTempsDischargeChageCurrentLimit() : CANMsg(CAN_ID_Bms_CellTempsDischargeChageCurrentLimit, CAN_DLC_Bms_CellTempsDischargeChageCurrentLimit) { }
@@ -504,11 +504,11 @@ namespace CANHelper::Messages
 		struct _BmsMessage : public Messages::CANMsg {
 			struct canData
 			{
-				int16_t PackCurrent
-				uint16_t PackInstVoltage
-				uint16_t PackSumv
-				uint8_t PackSoc
-				uint8_t RelayState
+				int16_t PackCurrent;
+				uint16_t PackInstVoltage;
+				uint16_t PackSumv;
+				uint8_t PackSoc;
+				uint8_t RelayState;
 			} __attribute__((aligned(8)));
 			canData data;
 			_BmsMessage() : CANMsg(CAN_ID_Bms_BmsMessage, CAN_DLC_Bms_BmsMessage) { }
