@@ -1,10 +1,40 @@
-#include "CanApiv02.hpp"
+#include "CanApiv04.hpp"
 namespace CANHelper
 {
 	void CanMsgHandler::DispatchMsg(can_frame msg)
 	{
 		switch(msg.can_id)
 		{
+#ifdef USE_MSG_Source_Item
+		case CAN_ID:
+			Messages::processMessage((Messages::Source::_Item&)msg);
+			break;
+#endif
+#ifdef USE_MSG_Telemetry_TimeAndFix
+		case 0x0F6:
+			Messages::processMessage((Messages::Telemetry::_TimeAndFix&)msg);
+			break;
+#endif
+#ifdef USE_MSG_Telemetry_SpeedAndAngle
+		case 0x0F7:
+			Messages::processMessage((Messages::Telemetry::_SpeedAndAngle&)msg);
+			break;
+#endif
+#ifdef USE_MSG_Telemetry_Latitude
+		case 0x0F8:
+			Messages::processMessage((Messages::Telemetry::_Latitude&)msg);
+			break;
+#endif
+#ifdef USE_MSG_Telemetry_Longitude
+		case 0x0F9:
+			Messages::processMessage((Messages::Telemetry::_Longitude&)msg);
+			break;
+#endif
+#ifdef USE_MSG_Telemetry_AltitudeAndSatellites
+		case 0x0FA:
+			Messages::processMessage((Messages::Telemetry::_AltitudeAndSatellites&)msg);
+			break;
+#endif
 #ifdef USE_MSG_Telemetry_SystemStatusMessages
 		case 0x111:
 			Messages::processMessage((Messages::Telemetry::_SystemStatusMessages&)msg);
@@ -80,9 +110,9 @@ namespace CANHelper
 			Messages::processMessage((Messages::Tritium::_2512VoltRail&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Tritium_FanSpeedMeasrement
+#ifdef USE_MSG_Tritium_FanSpeedMeasurement
 		case 0x60A:
-			Messages::processMessage((Messages::Tritium::_FanSpeedMeasrement&)msg);
+			Messages::processMessage((Messages::Tritium::_FanSpeedMeasurement&)msg);
 			break;
 #endif
 #ifdef USE_MSG_Tritium_SinkMotorTemperature
@@ -108,6 +138,16 @@ namespace CANHelper
 #ifdef USE_MSG_Bms_CellVoltages
 		case 0x700:
 			Messages::processMessage((Messages::Bms::_CellVoltages&)msg);
+			break;
+#endif
+#ifdef USE_MSG_Bms_CellTempsDischargeChageCurrentLimit
+		case 0x701:
+			Messages::processMessage((Messages::Bms::_CellTempsDischargeChageCurrentLimit&)msg);
+			break;
+#endif
+#ifdef USE_MSG_Bms_BmsMessage
+		case 0x702:
+			Messages::processMessage((Messages::Bms::_BmsMessage&)msg);
 			break;
 #endif
 		}

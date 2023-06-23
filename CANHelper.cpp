@@ -27,4 +27,9 @@ namespace CANHelper
     {
         this->mcp2515.sendMessage((can_frame*)&toSend);
     }
+
+    void CanMsgHandler::send(can_frame& toSend)
+    {
+        this->mcp2515.sendMessage(&toSend);
+    }
 }
