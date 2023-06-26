@@ -5,11 +5,6 @@ namespace CANHelper
 	{
 		switch(msg.can_id)
 		{
-#ifdef USE_MSG_Source_Item
-		case CAN_ID:
-			Messages::processMessage((Messages::Source::_Item&)msg);
-			break;
-#endif
 #ifdef USE_MSG_Telemetry_TimeAndFix
 		case 0x0F6:
 			Messages::processMessage((Messages::Telemetry::_TimeAndFix&)msg);
@@ -40,14 +35,14 @@ namespace CANHelper
 			Messages::processMessage((Messages::Telemetry::_SystemStatusMessages&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Testbed_TestbedEnvirocanIno1
+#ifdef USE_MSG_Testbed_TestbedEnvirocanIno
 		case 0x1B1:
-			Messages::processMessage((Messages::Testbed::_TestbedEnvirocanIno1&)msg);
+			Messages::processMessage((Messages::Testbed::_TestbedEnvirocanIno&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Testbed_TestbedEnvirocanIno2
+#ifdef USE_MSG_Testbed_TestbedEnvirocanIno
 		case 0x1B2:
-			Messages::processMessage((Messages::Testbed::_TestbedEnvirocanIno2&)msg);
+			Messages::processMessage((Messages::Testbed::_TestbedEnvirocanIno&)msg);
 			break;
 #endif
 #ifdef USE_MSG_DriverControls_SpeedValCurrVal
@@ -55,9 +50,9 @@ namespace CANHelper
 			Messages::processMessage((Messages::DriverControls::_SpeedValCurrVal&)msg);
 			break;
 #endif
-#ifdef USE_MSG_DriverControls_0Maxbuscurrent
+#ifdef USE_MSG_DriverControls_Maxbuscurrent
 		case 0x502:
-			Messages::processMessage((Messages::DriverControls::_0Maxbuscurrent&)msg);
+			Messages::processMessage((Messages::DriverControls::_Maxbuscurrent&)msg);
 			break;
 #endif
 #ifdef USE_MSG_Tritium_IdentificationInfo
@@ -75,9 +70,9 @@ namespace CANHelper
 			Messages::processMessage((Messages::Tritium::_BusMeasurement&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Tritium_VelocityMSRpm
+#ifdef USE_MSG_Tritium_Velocity
 		case 0x603:
-			Messages::processMessage((Messages::Tritium::_VelocityMSRpm&)msg);
+			Messages::processMessage((Messages::Tritium::_Velocity&)msg);
 			break;
 #endif
 #ifdef USE_MSG_Tritium_PhaseCurrent
@@ -100,14 +95,14 @@ namespace CANHelper
 			Messages::processMessage((Messages::Tritium::_MotorBackemfVector&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Tritium_15165VoltRail
+#ifdef USE_MSG_Tritium_Rail_15VAnd1_65V
 		case 0x608:
-			Messages::processMessage((Messages::Tritium::_15165VoltRail&)msg);
+			Messages::processMessage((Messages::Tritium::_Rail_15VAnd1_65V&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Tritium_2512VoltRail
+#ifdef USE_MSG_Tritium_Rail_2_5VAnd1_2V
 		case 0x609:
-			Messages::processMessage((Messages::Tritium::_2512VoltRail&)msg);
+			Messages::processMessage((Messages::Tritium::_Rail_2_5VAnd1_2V&)msg);
 			break;
 #endif
 #ifdef USE_MSG_Tritium_FanSpeedMeasurement
