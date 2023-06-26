@@ -20,7 +20,7 @@ namespace CANHelper::Messages
 				uint8_t GpsFixquality;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Telemetry() : CANMsg(CAN_ID_Telemetry_TimeAndFix, CAN_DLC_Telemetry_TimeAndFix) { }
+			_TimeAndFix() : CANMsg(CAN_ID_Telemetry_TimeAndFix, CAN_DLC_Telemetry_TimeAndFix) { }
 		};
 	}
 	void processMessage(Telemetry::_TimeAndFix& msg);
@@ -36,7 +36,7 @@ namespace CANHelper::Messages
 				float GpsAngle;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Telemetry() : CANMsg(CAN_ID_Telemetry_SpeedAndAngle, CAN_DLC_Telemetry_SpeedAndAngle) { }
+			_SpeedAndAngle() : CANMsg(CAN_ID_Telemetry_SpeedAndAngle, CAN_DLC_Telemetry_SpeedAndAngle) { }
 		};
 	}
 	void processMessage(Telemetry::_SpeedAndAngle& msg);
@@ -52,7 +52,7 @@ namespace CANHelper::Messages
 				char GpsLat;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Telemetry() : CANMsg(CAN_ID_Telemetry_Latitude, CAN_DLC_Telemetry_Latitude) { }
+			_Latitude() : CANMsg(CAN_ID_Telemetry_Latitude, CAN_DLC_Telemetry_Latitude) { }
 		};
 	}
 	void processMessage(Telemetry::_Latitude& msg);
@@ -68,7 +68,7 @@ namespace CANHelper::Messages
 				char GpsLon;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Telemetry() : CANMsg(CAN_ID_Telemetry_Longitude, CAN_DLC_Telemetry_Longitude) { }
+			_Longitude() : CANMsg(CAN_ID_Telemetry_Longitude, CAN_DLC_Telemetry_Longitude) { }
 		};
 	}
 	void processMessage(Telemetry::_Longitude& msg);
@@ -84,7 +84,7 @@ namespace CANHelper::Messages
 				uint8_t GpsSatellites;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Telemetry() : CANMsg(CAN_ID_Telemetry_AltitudeAndSatellites, CAN_DLC_Telemetry_AltitudeAndSatellites) { }
+			_AltitudeAndSatellites() : CANMsg(CAN_ID_Telemetry_AltitudeAndSatellites, CAN_DLC_Telemetry_AltitudeAndSatellites) { }
 		};
 	}
 	void processMessage(Telemetry::_AltitudeAndSatellites& msg);
@@ -106,7 +106,7 @@ namespace CANHelper::Messages
 				uint8_t Spare3;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Telemetry() : CANMsg(CAN_ID_Telemetry_SystemStatusMessages, CAN_DLC_Telemetry_SystemStatusMessages) { }
+			_SystemStatusMessages() : CANMsg(CAN_ID_Telemetry_SystemStatusMessages, CAN_DLC_Telemetry_SystemStatusMessages) { }
 		};
 	}
 	void processMessage(Telemetry::_SystemStatusMessages& msg);
@@ -122,7 +122,7 @@ namespace CANHelper::Messages
 				float Humidity;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Testbed() : CANMsg(CAN_ID_Testbed_TestbedEnvirocanIno, CAN_DLC_Testbed_TestbedEnvirocanIno) { }
+			_TestbedEnvirocanIno() : CANMsg(CAN_ID_Testbed_TestbedEnvirocanIno, CAN_DLC_Testbed_TestbedEnvirocanIno) { }
 		};
 	}
 	void processMessage(Testbed::_TestbedEnvirocanIno& msg);
@@ -138,7 +138,7 @@ namespace CANHelper::Messages
 				int32_t LdrReading;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Testbed() : CANMsg(CAN_ID_Testbed_TestbedEnvirocanIno, CAN_DLC_Testbed_TestbedEnvirocanIno) { }
+			_TestbedEnvirocanIno() : CANMsg(CAN_ID_Testbed_TestbedEnvirocanIno, CAN_DLC_Testbed_TestbedEnvirocanIno) { }
 		};
 	}
 	void processMessage(Testbed::_TestbedEnvirocanIno& msg);
@@ -154,7 +154,7 @@ namespace CANHelper::Messages
 				float DriverSetCurrent;
 			} __attribute__((aligned(8)));
 			canData data;
-			_DriverControls() : CANMsg(CAN_ID_DriverControls_SpeedValCurrVal, CAN_DLC_DriverControls_SpeedValCurrVal) { }
+			_SpeedValCurrVal() : CANMsg(CAN_ID_DriverControls_SpeedValCurrVal, CAN_DLC_DriverControls_SpeedValCurrVal) { }
 		};
 	}
 	void processMessage(DriverControls::_SpeedValCurrVal& msg);
@@ -170,7 +170,7 @@ namespace CANHelper::Messages
 				float MaxBusCurrent;
 			} __attribute__((aligned(8)));
 			canData data;
-			_DriverControls() : CANMsg(CAN_ID_DriverControls_Maxbuscurrent, CAN_DLC_DriverControls_Maxbuscurrent) { }
+			_Maxbuscurrent() : CANMsg(CAN_ID_DriverControls_Maxbuscurrent, CAN_DLC_DriverControls_Maxbuscurrent) { }
 		};
 	}
 	void processMessage(DriverControls::_Maxbuscurrent& msg);
@@ -186,7 +186,7 @@ namespace CANHelper::Messages
 				uint32_t TritiumId;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_IdentificationInfo, CAN_DLC_Tritium_IdentificationInfo) { }
+			_IdentificationInfo() : CANMsg(CAN_ID_Tritium_IdentificationInfo, CAN_DLC_Tritium_IdentificationInfo) { }
 		};
 	}
 	void processMessage(Tritium::_IdentificationInfo& msg);
@@ -204,7 +204,7 @@ namespace CANHelper::Messages
 				uint16_t Reserved;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_StausInformation, CAN_DLC_Tritium_StausInformation) { }
+			_StausInformation() : CANMsg(CAN_ID_Tritium_StausInformation, CAN_DLC_Tritium_StausInformation) { }
 		};
 	}
 	void processMessage(Tritium::_StausInformation& msg);
@@ -220,7 +220,7 @@ namespace CANHelper::Messages
 				float BusVoltage;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_BusMeasurement, CAN_DLC_Tritium_BusMeasurement) { }
+			_BusMeasurement() : CANMsg(CAN_ID_Tritium_BusMeasurement, CAN_DLC_Tritium_BusMeasurement) { }
 		};
 	}
 	void processMessage(Tritium::_BusMeasurement& msg);
@@ -236,7 +236,7 @@ namespace CANHelper::Messages
 				float MotorVelocity;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_Velocity, CAN_DLC_Tritium_Velocity) { }
+			_Velocity() : CANMsg(CAN_ID_Tritium_Velocity, CAN_DLC_Tritium_Velocity) { }
 		};
 	}
 	void processMessage(Tritium::_Velocity& msg);
@@ -252,7 +252,7 @@ namespace CANHelper::Messages
 				float PhaseBCurrent;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_PhaseCurrent, CAN_DLC_Tritium_PhaseCurrent) { }
+			_PhaseCurrent() : CANMsg(CAN_ID_Tritium_PhaseCurrent, CAN_DLC_Tritium_PhaseCurrent) { }
 		};
 	}
 	void processMessage(Tritium::_PhaseCurrent& msg);
@@ -268,7 +268,7 @@ namespace CANHelper::Messages
 				float VectVoltImag;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_MotorVoltageVector, CAN_DLC_Tritium_MotorVoltageVector) { }
+			_MotorVoltageVector() : CANMsg(CAN_ID_Tritium_MotorVoltageVector, CAN_DLC_Tritium_MotorVoltageVector) { }
 		};
 	}
 	void processMessage(Tritium::_MotorVoltageVector& msg);
@@ -284,7 +284,7 @@ namespace CANHelper::Messages
 				float VectCurrImag;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_MotorCurrentVector, CAN_DLC_Tritium_MotorCurrentVector) { }
+			_MotorCurrentVector() : CANMsg(CAN_ID_Tritium_MotorCurrentVector, CAN_DLC_Tritium_MotorCurrentVector) { }
 		};
 	}
 	void processMessage(Tritium::_MotorCurrentVector& msg);
@@ -300,7 +300,7 @@ namespace CANHelper::Messages
 				float BackEmfImag;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_MotorBackemfVector, CAN_DLC_Tritium_MotorBackemfVector) { }
+			_MotorBackemfVector() : CANMsg(CAN_ID_Tritium_MotorBackemfVector, CAN_DLC_Tritium_MotorBackemfVector) { }
 		};
 	}
 	void processMessage(Tritium::_MotorBackemfVector& msg);
@@ -316,7 +316,7 @@ namespace CANHelper::Messages
 				float Reserved;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_Rail_15VAnd1_65V, CAN_DLC_Tritium_Rail_15VAnd1_65V) { }
+			_Rail_15VAnd1_65V() : CANMsg(CAN_ID_Tritium_Rail_15VAnd1_65V, CAN_DLC_Tritium_Rail_15VAnd1_65V) { }
 		};
 	}
 	void processMessage(Tritium::_Rail_15VAnd1_65V& msg);
@@ -332,7 +332,7 @@ namespace CANHelper::Messages
 				float OneTwoVSupply;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_Rail_2_5VAnd1_2V, CAN_DLC_Tritium_Rail_2_5VAnd1_2V) { }
+			_Rail_2_5VAnd1_2V() : CANMsg(CAN_ID_Tritium_Rail_2_5VAnd1_2V, CAN_DLC_Tritium_Rail_2_5VAnd1_2V) { }
 		};
 	}
 	void processMessage(Tritium::_Rail_2_5VAnd1_2V& msg);
@@ -348,7 +348,7 @@ namespace CANHelper::Messages
 				float FanDrive;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_FanSpeedMeasurement, CAN_DLC_Tritium_FanSpeedMeasurement) { }
+			_FanSpeedMeasurement() : CANMsg(CAN_ID_Tritium_FanSpeedMeasurement, CAN_DLC_Tritium_FanSpeedMeasurement) { }
 		};
 	}
 	void processMessage(Tritium::_FanSpeedMeasurement& msg);
@@ -364,7 +364,7 @@ namespace CANHelper::Messages
 				float MotorTemp;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_SinkMotorTemperature, CAN_DLC_Tritium_SinkMotorTemperature) { }
+			_SinkMotorTemperature() : CANMsg(CAN_ID_Tritium_SinkMotorTemperature, CAN_DLC_Tritium_SinkMotorTemperature) { }
 		};
 	}
 	void processMessage(Tritium::_SinkMotorTemperature& msg);
@@ -380,7 +380,7 @@ namespace CANHelper::Messages
 				float ProcessorTemp;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_AirInCpuTemperature, CAN_DLC_Tritium_AirInCpuTemperature) { }
+			_AirInCpuTemperature() : CANMsg(CAN_ID_Tritium_AirInCpuTemperature, CAN_DLC_Tritium_AirInCpuTemperature) { }
 		};
 	}
 	void processMessage(Tritium::_AirInCpuTemperature& msg);
@@ -396,7 +396,7 @@ namespace CANHelper::Messages
 				float CapacitorTemp;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_AirOutCapTemperature, CAN_DLC_Tritium_AirOutCapTemperature) { }
+			_AirOutCapTemperature() : CANMsg(CAN_ID_Tritium_AirOutCapTemperature, CAN_DLC_Tritium_AirOutCapTemperature) { }
 		};
 	}
 	void processMessage(Tritium::_AirOutCapTemperature& msg);
@@ -412,7 +412,7 @@ namespace CANHelper::Messages
 				float Odometer;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Tritium() : CANMsg(CAN_ID_Tritium_OdoBusAmphours, CAN_DLC_Tritium_OdoBusAmphours) { }
+			_OdoBusAmphours() : CANMsg(CAN_ID_Tritium_OdoBusAmphours, CAN_DLC_Tritium_OdoBusAmphours) { }
 		};
 	}
 	void processMessage(Tritium::_OdoBusAmphours& msg);
@@ -429,7 +429,7 @@ namespace CANHelper::Messages
 				uint16_t AvgCellVoltage;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Bms() : CANMsg(CAN_ID_Bms_CellVoltages, CAN_DLC_Bms_CellVoltages) { }
+			_CellVoltages() : CANMsg(CAN_ID_Bms_CellVoltages, CAN_DLC_Bms_CellVoltages) { }
 		};
 	}
 	void processMessage(Bms::_CellVoltages& msg);
@@ -449,7 +449,7 @@ namespace CANHelper::Messages
 				int8_t CurrentLimit;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Bms() : CANMsg(CAN_ID_Bms_CellTempsDischargeChageCurrentLimit, CAN_DLC_Bms_CellTempsDischargeChageCurrentLimit) { }
+			_CellTempsDischargeChageCurrentLimit() : CANMsg(CAN_ID_Bms_CellTempsDischargeChageCurrentLimit, CAN_DLC_Bms_CellTempsDischargeChageCurrentLimit) { }
 		};
 	}
 	void processMessage(Bms::_CellTempsDischargeChageCurrentLimit& msg);
@@ -468,7 +468,7 @@ namespace CANHelper::Messages
 				uint8_t RelayState;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Bms() : CANMsg(CAN_ID_Bms_BmsMessage, CAN_DLC_Bms_BmsMessage) { }
+			_BmsMessage() : CANMsg(CAN_ID_Bms_BmsMessage, CAN_DLC_Bms_BmsMessage) { }
 		};
 	}
 	void processMessage(Bms::_BmsMessage& msg);
