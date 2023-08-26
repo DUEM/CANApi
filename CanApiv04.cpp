@@ -170,9 +170,14 @@ namespace CANHelper
 			Messages::processMessage((Messages::Telemetry::_MpptPollWoof&)msg);
 			break;
 #endif
-#ifdef USE_MSG_MpptJaved_MpptJaved
+#ifdef USE_MSG_Mppt_Javed
 		case 0x771:
-			Messages::processMessage((Messages::MpptJaved::_MpptJaved&)msg);
+			Messages::processMessage((Messages::Mppt::_Javed&)msg);
+			break;
+#endif
+#ifdef USE_MSG_Mppt_Woof
+		case 0x772:
+			Messages::processMessage((Messages::Mppt::_Woof&)msg);
 			break;
 #endif
 		}

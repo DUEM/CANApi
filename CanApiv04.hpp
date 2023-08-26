@@ -557,12 +557,12 @@ namespace CANHelper::Messages
 	}
 	void processMessage(Telemetry::_MpptPollWoof& msg);
 #endif
-#ifdef USE_MSG_MpptJaved_MpptJaved
-#define CAN_ID_MpptJaved_MpptJaved 0x771
-#define CAN_DLC_MpptJaved_MpptJaved 7
-	namespace MpptJaved
+#ifdef USE_MSG_Mppt_Javed
+#define CAN_ID_Mppt_Javed 0x771
+#define CAN_DLC_Mppt_Javed 7
+	namespace Mppt
 	{
-		struct _MpptJaved : public Messages::CANMsg {
+		struct _Javed : public Messages::CANMsg {
 			struct canData {
 				uint8_t FlagsAndMsbVoltageIn;
 				uint8_t LsbVoltageIn;
@@ -573,10 +573,31 @@ namespace CANHelper::Messages
 				uint8_t AmbientTemperature;
 			} __attribute__((aligned(8)));
 			canData data;
-			_MpptJaved() : CANMsg(CAN_ID_MpptJaved_MpptJaved, CAN_DLC_MpptJaved_MpptJaved) { }
+			_Javed() : CANMsg(CAN_ID_Mppt_Javed, CAN_DLC_Mppt_Javed) { }
 		};
 	}
-	void processMessage(MpptJaved::_MpptJaved& msg);
+	void processMessage(Mppt::_Javed& msg);
+#endif
+#ifdef USE_MSG_Mppt_Woof
+#define CAN_ID_Mppt_Woof 0x772
+#define CAN_DLC_Mppt_Woof 7
+	namespace Mppt
+	{
+		struct _Woof : public Messages::CANMsg {
+			struct canData {
+				uint8_t FlagsAndMsbVoltageIn;
+				uint8_t LsbVoltageIn;
+				uint8_t MsbCurrentIn;
+				uint8_t LsbCurrentIn;
+				uint8_t MsbVoltageOut;
+				uint8_t LsbVoltageOut;
+				uint8_t AmbientTemperature;
+			} __attribute__((aligned(8)));
+			canData data;
+			_Woof() : CANMsg(CAN_ID_Mppt_Woof, CAN_DLC_Mppt_Woof) { }
+		};
+	}
+	void processMessage(Mppt::_Woof& msg);
 #endif
 #ifdef PROCESS_ALL_MSG
 	void processAll(CANMsg& msg);
