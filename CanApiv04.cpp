@@ -95,19 +95,19 @@ namespace CANHelper
 			Messages::processMessage((Messages::Tritium::_MotorBackemfVector&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Tritium_Rail_15VAnd1_65V
+#ifdef USE_MSG_Tritium_Rail_15V
 		case 0x608:
-			Messages::processMessage((Messages::Tritium::_Rail_15VAnd1_65V&)msg);
+			Messages::processMessage((Messages::Tritium::_Rail_15V&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Tritium_Rail_2_5VAnd1_2V
+#ifdef USE_MSG_Tritium_Rail_3_3VAnd1_9V
 		case 0x609:
-			Messages::processMessage((Messages::Tritium::_Rail_2_5VAnd1_2V&)msg);
+			Messages::processMessage((Messages::Tritium::_Rail_3_3VAnd1_9V&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Tritium_FanSpeedMeasurement
+#ifdef USE_MSG_Tritium_Reserved
 		case 0x60A:
-			Messages::processMessage((Messages::Tritium::_FanSpeedMeasurement&)msg);
+			Messages::processMessage((Messages::Tritium::_Reserved&)msg);
 			break;
 #endif
 #ifdef USE_MSG_Tritium_SinkMotorTemperature
@@ -115,14 +115,14 @@ namespace CANHelper
 			Messages::processMessage((Messages::Tritium::_SinkMotorTemperature&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Tritium_AirInCpuTemperature
+#ifdef USE_MSG_Tritium_DspBoardTemperature
 		case 0x60C:
-			Messages::processMessage((Messages::Tritium::_AirInCpuTemperature&)msg);
+			Messages::processMessage((Messages::Tritium::_DspBoardTemperature&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Tritium_AirOutCapTemperature
+#ifdef USE_MSG_Tritium_Reserved
 		case 0x60D:
-			Messages::processMessage((Messages::Tritium::_AirOutCapTemperature&)msg);
+			Messages::processMessage((Messages::Tritium::_Reserved&)msg);
 			break;
 #endif
 #ifdef USE_MSG_Tritium_OdoBusAmphours
@@ -130,19 +130,49 @@ namespace CANHelper
 			Messages::processMessage((Messages::Tritium::_OdoBusAmphours&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Bms_CellVoltages
+#ifdef USE_MSG_Tritium_SlipSpeedMeasurement
+		case 0x617:
+			Messages::processMessage((Messages::Tritium::_SlipSpeedMeasurement&)msg);
+			break;
+#endif
+#ifdef USE_MSG_Orion_CellVoltages
+		case 0x6B0:
+			Messages::processMessage((Messages::Orion::_CellVoltages&)msg);
+			break;
+#endif
+#ifdef USE_MSG_Orion_CellTempsDischargeChageCurrentLimit
+		case 0x6B1:
+			Messages::processMessage((Messages::Orion::_CellTempsDischargeChageCurrentLimit&)msg);
+			break;
+#endif
+#ifdef USE_MSG_Orion_CellVoltages
 		case 0x700:
-			Messages::processMessage((Messages::Bms::_CellVoltages&)msg);
+			Messages::processMessage((Messages::Orion::_CellVoltages&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Bms_CellTempsDischargeChageCurrentLimit
+#ifdef USE_MSG_Orion_CellTempsDischargeChageCurrentLimit
 		case 0x701:
-			Messages::processMessage((Messages::Bms::_CellTempsDischargeChageCurrentLimit&)msg);
+			Messages::processMessage((Messages::Orion::_CellTempsDischargeChageCurrentLimit&)msg);
 			break;
 #endif
-#ifdef USE_MSG_Bms_BmsMessage
+#ifdef USE_MSG_Orion_CellTempsDischargeChageCurrentLimit
 		case 0x702:
-			Messages::processMessage((Messages::Bms::_BmsMessage&)msg);
+			Messages::processMessage((Messages::Orion::_CellTempsDischargeChageCurrentLimit&)msg);
+			break;
+#endif
+#ifdef USE_MSG_Telemetry_MpptPollJaved
+		case 0x711:
+			Messages::processMessage((Messages::Telemetry::_MpptPollJaved&)msg);
+			break;
+#endif
+#ifdef USE_MSG_Telemetry_MpptPollWoof
+		case 0x712:
+			Messages::processMessage((Messages::Telemetry::_MpptPollWoof&)msg);
+			break;
+#endif
+#ifdef USE_MSG_MpptJaved_MpptJaved
+		case 0x771:
+			Messages::processMessage((Messages::MpptJaved::_MpptJaved&)msg);
 			break;
 #endif
 		}

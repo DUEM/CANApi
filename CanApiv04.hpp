@@ -182,8 +182,8 @@ namespace CANHelper::Messages
 	{
 		struct _IdentificationInfo : public Messages::CANMsg {
 			struct canData {
-				uint32_t SerialNumber;
 				uint32_t TritiumId;
+				uint32_t SerialNumber;
 			} __attribute__((aligned(8)));
 			canData data;
 			_IdentificationInfo() : CANMsg(CAN_ID_Tritium_IdentificationInfo, CAN_DLC_Tritium_IdentificationInfo) { }
@@ -198,10 +198,11 @@ namespace CANHelper::Messages
 	{
 		struct _StausInformation : public Messages::CANMsg {
 			struct canData {
-				uint16_t ActiveMotor;
-				uint16_t ErrorFlags;
 				uint16_t LimitFlags;
-				uint16_t Reserved;
+				uint16_t ErrorFlags;
+				uint16_t ActiveMotor;
+				uint8_t TransmitErrorCount;
+				uint8_t ReceiveErrorCount;
 			} __attribute__((aligned(8)));
 			canData data;
 			_StausInformation() : CANMsg(CAN_ID_Tritium_StausInformation, CAN_DLC_Tritium_StausInformation) { }
@@ -216,8 +217,8 @@ namespace CANHelper::Messages
 	{
 		struct _BusMeasurement : public Messages::CANMsg {
 			struct canData {
-				float BusCurrent;
 				float BusVoltage;
+				float BusCurrent;
 			} __attribute__((aligned(8)));
 			canData data;
 			_BusMeasurement() : CANMsg(CAN_ID_Tritium_BusMeasurement, CAN_DLC_Tritium_BusMeasurement) { }
@@ -232,8 +233,8 @@ namespace CANHelper::Messages
 	{
 		struct _Velocity : public Messages::CANMsg {
 			struct canData {
-				float VehicleVelocity;
 				float MotorVelocity;
+				float VehicleVelocity;
 			} __attribute__((aligned(8)));
 			canData data;
 			_Velocity() : CANMsg(CAN_ID_Tritium_Velocity, CAN_DLC_Tritium_Velocity) { }
@@ -248,8 +249,8 @@ namespace CANHelper::Messages
 	{
 		struct _PhaseCurrent : public Messages::CANMsg {
 			struct canData {
-				float PhaseACurrent;
 				float PhaseBCurrent;
+				float PhaseCCurrent;
 			} __attribute__((aligned(8)));
 			canData data;
 			_PhaseCurrent() : CANMsg(CAN_ID_Tritium_PhaseCurrent, CAN_DLC_Tritium_PhaseCurrent) { }
@@ -264,8 +265,8 @@ namespace CANHelper::Messages
 	{
 		struct _MotorVoltageVector : public Messages::CANMsg {
 			struct canData {
-				float VectVoltReal;
 				float VectVoltImag;
+				float VectVoltReal;
 			} __attribute__((aligned(8)));
 			canData data;
 			_MotorVoltageVector() : CANMsg(CAN_ID_Tritium_MotorVoltageVector, CAN_DLC_Tritium_MotorVoltageVector) { }
@@ -280,8 +281,8 @@ namespace CANHelper::Messages
 	{
 		struct _MotorCurrentVector : public Messages::CANMsg {
 			struct canData {
-				float VectCurrReal;
 				float VectCurrImag;
+				float VectCurrReal;
 			} __attribute__((aligned(8)));
 			canData data;
 			_MotorCurrentVector() : CANMsg(CAN_ID_Tritium_MotorCurrentVector, CAN_DLC_Tritium_MotorCurrentVector) { }
@@ -296,8 +297,8 @@ namespace CANHelper::Messages
 	{
 		struct _MotorBackemfVector : public Messages::CANMsg {
 			struct canData {
-				float BackEmfReal;
-				float BackEmfImag;
+				float PeakBackEmfPhaseToNeutral;
+				float BackEmfD;
 			} __attribute__((aligned(8)));
 			canData data;
 			_MotorBackemfVector() : CANMsg(CAN_ID_Tritium_MotorBackemfVector, CAN_DLC_Tritium_MotorBackemfVector) { }
@@ -305,53 +306,53 @@ namespace CANHelper::Messages
 	}
 	void processMessage(Tritium::_MotorBackemfVector& msg);
 #endif
-#ifdef USE_MSG_Tritium_Rail_15VAnd1_65V
-#define CAN_ID_Tritium_Rail_15VAnd1_65V 0x608
-#define CAN_DLC_Tritium_Rail_15VAnd1_65V 8
+#ifdef USE_MSG_Tritium_Rail_15V
+#define CAN_ID_Tritium_Rail_15V 0x608
+#define CAN_DLC_Tritium_Rail_15V 8
 	namespace Tritium
 	{
-		struct _Rail_15VAnd1_65V : public Messages::CANMsg {
+		struct _Rail_15V : public Messages::CANMsg {
 			struct canData {
+				float Reserved;
 				float FifteenVSupply;
+			} __attribute__((aligned(8)));
+			canData data;
+			_Rail_15V() : CANMsg(CAN_ID_Tritium_Rail_15V, CAN_DLC_Tritium_Rail_15V) { }
+		};
+	}
+	void processMessage(Tritium::_Rail_15V& msg);
+#endif
+#ifdef USE_MSG_Tritium_Rail_3_3VAnd1_9V
+#define CAN_ID_Tritium_Rail_3_3VAnd1_9V 0x609
+#define CAN_DLC_Tritium_Rail_3_3VAnd1_9V 8
+	namespace Tritium
+	{
+		struct _Rail_3_3VAnd1_9V : public Messages::CANMsg {
+			struct canData {
+				float OneNineVSupply;
+				float ThreeThreeVSupply;
+			} __attribute__((aligned(8)));
+			canData data;
+			_Rail_3_3VAnd1_9V() : CANMsg(CAN_ID_Tritium_Rail_3_3VAnd1_9V, CAN_DLC_Tritium_Rail_3_3VAnd1_9V) { }
+		};
+	}
+	void processMessage(Tritium::_Rail_3_3VAnd1_9V& msg);
+#endif
+#ifdef USE_MSG_Tritium_Reserved
+#define CAN_ID_Tritium_Reserved 0x60A
+#define CAN_DLC_Tritium_Reserved 8
+	namespace Tritium
+	{
+		struct _Reserved : public Messages::CANMsg {
+			struct canData {
+				float Reserved;
 				float Reserved;
 			} __attribute__((aligned(8)));
 			canData data;
-			_Rail_15VAnd1_65V() : CANMsg(CAN_ID_Tritium_Rail_15VAnd1_65V, CAN_DLC_Tritium_Rail_15VAnd1_65V) { }
+			_Reserved() : CANMsg(CAN_ID_Tritium_Reserved, CAN_DLC_Tritium_Reserved) { }
 		};
 	}
-	void processMessage(Tritium::_Rail_15VAnd1_65V& msg);
-#endif
-#ifdef USE_MSG_Tritium_Rail_2_5VAnd1_2V
-#define CAN_ID_Tritium_Rail_2_5VAnd1_2V 0x609
-#define CAN_DLC_Tritium_Rail_2_5VAnd1_2V 8
-	namespace Tritium
-	{
-		struct _Rail_2_5VAnd1_2V : public Messages::CANMsg {
-			struct canData {
-				float TwoFiveVSupply;
-				float OneTwoVSupply;
-			} __attribute__((aligned(8)));
-			canData data;
-			_Rail_2_5VAnd1_2V() : CANMsg(CAN_ID_Tritium_Rail_2_5VAnd1_2V, CAN_DLC_Tritium_Rail_2_5VAnd1_2V) { }
-		};
-	}
-	void processMessage(Tritium::_Rail_2_5VAnd1_2V& msg);
-#endif
-#ifdef USE_MSG_Tritium_FanSpeedMeasurement
-#define CAN_ID_Tritium_FanSpeedMeasurement 0x60A
-#define CAN_DLC_Tritium_FanSpeedMeasurement 8
-	namespace Tritium
-	{
-		struct _FanSpeedMeasurement : public Messages::CANMsg {
-			struct canData {
-				float FanSpeed;
-				float FanDrive;
-			} __attribute__((aligned(8)));
-			canData data;
-			_FanSpeedMeasurement() : CANMsg(CAN_ID_Tritium_FanSpeedMeasurement, CAN_DLC_Tritium_FanSpeedMeasurement) { }
-		};
-	}
-	void processMessage(Tritium::_FanSpeedMeasurement& msg);
+	void processMessage(Tritium::_Reserved& msg);
 #endif
 #ifdef USE_MSG_Tritium_SinkMotorTemperature
 #define CAN_ID_Tritium_SinkMotorTemperature 0x60B
@@ -360,8 +361,8 @@ namespace CANHelper::Messages
 	{
 		struct _SinkMotorTemperature : public Messages::CANMsg {
 			struct canData {
-				float HeatSinkTemp;
 				float MotorTemp;
+				float HeatSinkTemp;
 			} __attribute__((aligned(8)));
 			canData data;
 			_SinkMotorTemperature() : CANMsg(CAN_ID_Tritium_SinkMotorTemperature, CAN_DLC_Tritium_SinkMotorTemperature) { }
@@ -369,37 +370,37 @@ namespace CANHelper::Messages
 	}
 	void processMessage(Tritium::_SinkMotorTemperature& msg);
 #endif
-#ifdef USE_MSG_Tritium_AirInCpuTemperature
-#define CAN_ID_Tritium_AirInCpuTemperature 0x60C
-#define CAN_DLC_Tritium_AirInCpuTemperature 8
+#ifdef USE_MSG_Tritium_DspBoardTemperature
+#define CAN_ID_Tritium_DspBoardTemperature 0x60C
+#define CAN_DLC_Tritium_DspBoardTemperature 8
 	namespace Tritium
 	{
-		struct _AirInCpuTemperature : public Messages::CANMsg {
+		struct _DspBoardTemperature : public Messages::CANMsg {
 			struct canData {
-				float AirInletTemp;
-				float ProcessorTemp;
+				float DspBoardTemp;
+				float Reserved;
 			} __attribute__((aligned(8)));
 			canData data;
-			_AirInCpuTemperature() : CANMsg(CAN_ID_Tritium_AirInCpuTemperature, CAN_DLC_Tritium_AirInCpuTemperature) { }
+			_DspBoardTemperature() : CANMsg(CAN_ID_Tritium_DspBoardTemperature, CAN_DLC_Tritium_DspBoardTemperature) { }
 		};
 	}
-	void processMessage(Tritium::_AirInCpuTemperature& msg);
+	void processMessage(Tritium::_DspBoardTemperature& msg);
 #endif
-#ifdef USE_MSG_Tritium_AirOutCapTemperature
-#define CAN_ID_Tritium_AirOutCapTemperature 0x60D
-#define CAN_DLC_Tritium_AirOutCapTemperature 8
+#ifdef USE_MSG_Tritium_Reserved
+#define CAN_ID_Tritium_Reserved 0x60D
+#define CAN_DLC_Tritium_Reserved 8
 	namespace Tritium
 	{
-		struct _AirOutCapTemperature : public Messages::CANMsg {
+		struct _Reserved : public Messages::CANMsg {
 			struct canData {
-				float AirOutletTemp;
-				float CapacitorTemp;
+				float Reserved;
+				float Reserved;
 			} __attribute__((aligned(8)));
 			canData data;
-			_AirOutCapTemperature() : CANMsg(CAN_ID_Tritium_AirOutCapTemperature, CAN_DLC_Tritium_AirOutCapTemperature) { }
+			_Reserved() : CANMsg(CAN_ID_Tritium_Reserved, CAN_DLC_Tritium_Reserved) { }
 		};
 	}
-	void processMessage(Tritium::_AirOutCapTemperature& msg);
+	void processMessage(Tritium::_Reserved& msg);
 #endif
 #ifdef USE_MSG_Tritium_OdoBusAmphours
 #define CAN_ID_Tritium_OdoBusAmphours 0x60E
@@ -408,8 +409,8 @@ namespace CANHelper::Messages
 	{
 		struct _OdoBusAmphours : public Messages::CANMsg {
 			struct canData {
-				float DcBusAmpHours;
 				float Odometer;
+				float DcBusAmpHours;
 			} __attribute__((aligned(8)));
 			canData data;
 			_OdoBusAmphours() : CANMsg(CAN_ID_Tritium_OdoBusAmphours, CAN_DLC_Tritium_OdoBusAmphours) { }
@@ -417,61 +418,165 @@ namespace CANHelper::Messages
 	}
 	void processMessage(Tritium::_OdoBusAmphours& msg);
 #endif
-#ifdef USE_MSG_Bms_CellVoltages
-#define CAN_ID_Bms_CellVoltages 0x700
-#define CAN_DLC_Bms_CellVoltages 6
-	namespace Bms
+#ifdef USE_MSG_Tritium_SlipSpeedMeasurement
+#define CAN_ID_Tritium_SlipSpeedMeasurement 0x617
+#define CAN_DLC_Tritium_SlipSpeedMeasurement 8
+	namespace Tritium
+	{
+		struct _SlipSpeedMeasurement : public Messages::CANMsg {
+			struct canData {
+				float Reserved;
+				float SlipSpeed;
+			} __attribute__((aligned(8)));
+			canData data;
+			_SlipSpeedMeasurement() : CANMsg(CAN_ID_Tritium_SlipSpeedMeasurement, CAN_DLC_Tritium_SlipSpeedMeasurement) { }
+		};
+	}
+	void processMessage(Tritium::_SlipSpeedMeasurement& msg);
+#endif
+#ifdef USE_MSG_Orion_CellVoltages
+#define CAN_ID_Orion_CellVoltages 0x6B0
+#define CAN_DLC_Orion_CellVoltages 7
+	namespace Orion
 	{
 		struct _CellVoltages : public Messages::CANMsg {
 			struct canData {
-				uint16_t HighCellVoltage;
-				uint16_t LowCellVoltage;
-				uint16_t AvgCellVoltage;
+				uint16_t PackCurrent;
+				uint16_t PackInstVoltage;
+				uint8_t PackSoc;
+				uint16_t RelayState;
 			} __attribute__((aligned(8)));
 			canData data;
-			_CellVoltages() : CANMsg(CAN_ID_Bms_CellVoltages, CAN_DLC_Bms_CellVoltages) { }
+			_CellVoltages() : CANMsg(CAN_ID_Orion_CellVoltages, CAN_DLC_Orion_CellVoltages) { }
 		};
 	}
-	void processMessage(Bms::_CellVoltages& msg);
+	void processMessage(Orion::_CellVoltages& msg);
 #endif
-#ifdef USE_MSG_Bms_CellTempsDischargeChageCurrentLimit
-#define CAN_ID_Bms_CellTempsDischargeChageCurrentLimit 0x701
-#define CAN_DLC_Bms_CellTempsDischargeChageCurrentLimit 6
-	namespace Bms
+#ifdef USE_MSG_Orion_CellTempsDischargeChageCurrentLimit
+#define CAN_ID_Orion_CellTempsDischargeChageCurrentLimit 0x6B1
+#define CAN_DLC_Orion_CellTempsDischargeChageCurrentLimit 7
+	namespace Orion
 	{
 		struct _CellTempsDischargeChageCurrentLimit : public Messages::CANMsg {
 			struct canData {
-				int8_t HighTemperature;
-				int8_t LowTemperature;
-				int8_t AverageTemperature;
-				int8_t PackDcl;
-				int8_t PackCcl;
-				int8_t CurrentLimit;
+				int16_t PackDcl;
+				int16_t Unknown;
+				int8_t HighTemperatureSensor;
+				int8_t LowTemperatureSensors;
+				int8_t Blank;
 			} __attribute__((aligned(8)));
 			canData data;
-			_CellTempsDischargeChageCurrentLimit() : CANMsg(CAN_ID_Bms_CellTempsDischargeChageCurrentLimit, CAN_DLC_Bms_CellTempsDischargeChageCurrentLimit) { }
+			_CellTempsDischargeChageCurrentLimit() : CANMsg(CAN_ID_Orion_CellTempsDischargeChageCurrentLimit, CAN_DLC_Orion_CellTempsDischargeChageCurrentLimit) { }
 		};
 	}
-	void processMessage(Bms::_CellTempsDischargeChageCurrentLimit& msg);
+	void processMessage(Orion::_CellTempsDischargeChageCurrentLimit& msg);
 #endif
-#ifdef USE_MSG_Bms_BmsMessage
-#define CAN_ID_Bms_BmsMessage 0x702
-#define CAN_DLC_Bms_BmsMessage 8
-	namespace Bms
+#ifdef USE_MSG_Orion_CellVoltages
+#define CAN_ID_Orion_CellVoltages 0x700
+#define CAN_DLC_Orion_CellVoltages 7
+	namespace Orion
 	{
-		struct _BmsMessage : public Messages::CANMsg {
+		struct _CellVoltages : public Messages::CANMsg {
 			struct canData {
-				int16_t PackCurrent;
+				uint16_t PackCurrent;
 				uint16_t PackInstVoltage;
-				uint16_t PackSumv;
 				uint8_t PackSoc;
-				uint8_t RelayState;
+				uint16_t RelayState;
 			} __attribute__((aligned(8)));
 			canData data;
-			_BmsMessage() : CANMsg(CAN_ID_Bms_BmsMessage, CAN_DLC_Bms_BmsMessage) { }
+			_CellVoltages() : CANMsg(CAN_ID_Orion_CellVoltages, CAN_DLC_Orion_CellVoltages) { }
 		};
 	}
-	void processMessage(Bms::_BmsMessage& msg);
+	void processMessage(Orion::_CellVoltages& msg);
+#endif
+#ifdef USE_MSG_Orion_CellTempsDischargeChageCurrentLimit
+#define CAN_ID_Orion_CellTempsDischargeChageCurrentLimit 0x701
+#define CAN_DLC_Orion_CellTempsDischargeChageCurrentLimit 7
+	namespace Orion
+	{
+		struct _CellTempsDischargeChageCurrentLimit : public Messages::CANMsg {
+			struct canData {
+				int16_t PackDcl;
+				int16_t Unknown;
+				int8_t HighTemperatureSensor;
+				int8_t LowTemperatureSensors;
+				int8_t Blank;
+			} __attribute__((aligned(8)));
+			canData data;
+			_CellTempsDischargeChageCurrentLimit() : CANMsg(CAN_ID_Orion_CellTempsDischargeChageCurrentLimit, CAN_DLC_Orion_CellTempsDischargeChageCurrentLimit) { }
+		};
+	}
+	void processMessage(Orion::_CellTempsDischargeChageCurrentLimit& msg);
+#endif
+#ifdef USE_MSG_Orion_CellTempsDischargeChageCurrentLimit
+#define CAN_ID_Orion_CellTempsDischargeChageCurrentLimit 0x702
+#define CAN_DLC_Orion_CellTempsDischargeChageCurrentLimit 7
+	namespace Orion
+	{
+		struct _CellTempsDischargeChageCurrentLimit : public Messages::CANMsg {
+			struct canData {
+				int8_t MinCellVoltage;
+				int8_t MaxCellVoltage;
+				int8_t PackKwPower;
+				int8_t ReqFanSpeed;
+				int8_t IntakeTemperature;
+				int8_t Blank;
+				int8_t Blank;
+			} __attribute__((aligned(8)));
+			canData data;
+			_CellTempsDischargeChageCurrentLimit() : CANMsg(CAN_ID_Orion_CellTempsDischargeChageCurrentLimit, CAN_DLC_Orion_CellTempsDischargeChageCurrentLimit) { }
+		};
+	}
+	void processMessage(Orion::_CellTempsDischargeChageCurrentLimit& msg);
+#endif
+#ifdef USE_MSG_Telemetry_MpptPollJaved
+#define CAN_ID_Telemetry_MpptPollJaved 0x711
+#define CAN_DLC_Telemetry_MpptPollJaved 0
+	namespace Telemetry
+	{
+		struct _MpptPollJaved : public Messages::CANMsg {
+			struct canData {
+			} __attribute__((aligned(8)));
+			canData data;
+			_MpptPollJaved() : CANMsg(CAN_ID_Telemetry_MpptPollJaved, CAN_DLC_Telemetry_MpptPollJaved) { }
+		};
+	}
+	void processMessage(Telemetry::_MpptPollJaved& msg);
+#endif
+#ifdef USE_MSG_Telemetry_MpptPollWoof
+#define CAN_ID_Telemetry_MpptPollWoof 0x712
+#define CAN_DLC_Telemetry_MpptPollWoof 0
+	namespace Telemetry
+	{
+		struct _MpptPollWoof : public Messages::CANMsg {
+			struct canData {
+			} __attribute__((aligned(8)));
+			canData data;
+			_MpptPollWoof() : CANMsg(CAN_ID_Telemetry_MpptPollWoof, CAN_DLC_Telemetry_MpptPollWoof) { }
+		};
+	}
+	void processMessage(Telemetry::_MpptPollWoof& msg);
+#endif
+#ifdef USE_MSG_MpptJaved_MpptJaved
+#define CAN_ID_MpptJaved_MpptJaved 0x771
+#define CAN_DLC_MpptJaved_MpptJaved 7
+	namespace MpptJaved
+	{
+		struct _MpptJaved : public Messages::CANMsg {
+			struct canData {
+				uint8_t FlagsAndMsbVoltageIn;
+				uint8_t LsbVoltageIn;
+				uint8_t MsbCurrentIn;
+				uint8_t LsbCurrentIn;
+				uint8_t MsbVoltageOut;
+				uint8_t LsbVoltageOut;
+				uint8_t AmbientTemperature;
+			} __attribute__((aligned(8)));
+			canData data;
+			_MpptJaved() : CANMsg(CAN_ID_MpptJaved_MpptJaved, CAN_DLC_MpptJaved_MpptJaved) { }
+		};
+	}
+	void processMessage(MpptJaved::_MpptJaved& msg);
 #endif
 #ifdef PROCESS_ALL_MSG
 	void processAll(CANMsg& msg);
