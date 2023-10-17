@@ -20,7 +20,7 @@ namespace CANHelper::Messages
 	void processMessage(Source::_Item& msg);
 #endif
 #ifdef USE_MSG_Telemetry_TimeAndFix
-#define CAN_ID_Telemetry_TimeAndFix 0x0F6
+#define CAN_ID_Telemetry_TimeAndFix 0x8F6
 #define CAN_DLC_Telemetry_TimeAndFix 8
 	namespace Telemetry
 	{
@@ -43,7 +43,7 @@ namespace CANHelper::Messages
 	void processMessage(Telemetry::_TimeAndFix& msg);
 #endif
 #ifdef USE_MSG_Telemetry_SpeedAndAngle
-#define CAN_ID_Telemetry_SpeedAndAngle 0x0F7
+#define CAN_ID_Telemetry_SpeedAndAngle 0x8F7
 #define CAN_DLC_Telemetry_SpeedAndAngle 8
 	namespace Telemetry
 	{
@@ -60,7 +60,7 @@ namespace CANHelper::Messages
 	void processMessage(Telemetry::_SpeedAndAngle& msg);
 #endif
 #ifdef USE_MSG_Telemetry_Latitude
-#define CAN_ID_Telemetry_Latitude 0x0F8
+#define CAN_ID_Telemetry_Latitude 0x8F8
 #define CAN_DLC_Telemetry_Latitude 5
 	namespace Telemetry
 	{
@@ -77,7 +77,7 @@ namespace CANHelper::Messages
 	void processMessage(Telemetry::_Latitude& msg);
 #endif
 #ifdef USE_MSG_Telemetry_Longitude
-#define CAN_ID_Telemetry_Longitude 0x0F9
+#define CAN_ID_Telemetry_Longitude 0x8F9
 #define CAN_DLC_Telemetry_Longitude 5
 	namespace Telemetry
 	{
@@ -94,7 +94,7 @@ namespace CANHelper::Messages
 	void processMessage(Telemetry::_Longitude& msg);
 #endif
 #ifdef USE_MSG_Telemetry_AltitudeAndSatellites
-#define CAN_ID_Telemetry_AltitudeAndSatellites 0x0FA
+#define CAN_ID_Telemetry_AltitudeAndSatellites 0x8FA
 #define CAN_DLC_Telemetry_AltitudeAndSatellites 5
 	namespace Telemetry
 	{
@@ -111,7 +111,7 @@ namespace CANHelper::Messages
 	void processMessage(Telemetry::_AltitudeAndSatellites& msg);
 #endif
 #ifdef USE_MSG_Telemetry_SystemStatusMessages
-#define CAN_ID_Telemetry_SystemStatusMessages 0x111
+#define CAN_ID_Telemetry_SystemStatusMessages 0x811
 #define CAN_DLC_Telemetry_SystemStatusMessages 8
 	namespace Telemetry
 	{
@@ -134,7 +134,7 @@ namespace CANHelper::Messages
 	void processMessage(Telemetry::_SystemStatusMessages& msg);
 #endif
 #ifdef USE_MSG_Testbed_TestbedEnvirocanIno1
-#define CAN_ID_Testbed_TestbedEnvirocanIno1 0x1B1
+#define CAN_ID_Testbed_TestbedEnvirocanIno1 0x8B1
 #define CAN_DLC_Testbed_TestbedEnvirocanIno1 8
 	namespace Testbed
 	{
@@ -151,7 +151,7 @@ namespace CANHelper::Messages
 	void processMessage(Testbed::_TestbedEnvirocanIno1& msg);
 #endif
 #ifdef USE_MSG_Testbed_TestbedEnvirocanIno2
-#define CAN_ID_Testbed_TestbedEnvirocanIno2 0x1B2
+#define CAN_ID_Testbed_TestbedEnvirocanIno2 0x8B2
 #define CAN_DLC_Testbed_TestbedEnvirocanIno2 8
 	namespace Testbed
 	{
