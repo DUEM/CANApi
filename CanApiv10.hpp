@@ -653,7 +653,7 @@ namespace CANHelper::Messages {
 		void processMessage(Messages::Mppt::Woof& msg);
 #endif
 #ifdef PROCESS_ALL_MSG
-		void processAll(Messages::CastedCANPayload& msg);
+		void processAll(CANHelperBuffer& msg);
 #endif
 	};
 }
