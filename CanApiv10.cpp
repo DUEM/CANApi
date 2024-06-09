@@ -179,7 +179,7 @@ namespace CANHelper {
 #endif
 		}
 #ifdef PROCESS_ALL_MSG
-		processAll(LATEST_MSG_DATA);
+		this->processAll(LATEST_MSG);
 #endif
 	}
 }
