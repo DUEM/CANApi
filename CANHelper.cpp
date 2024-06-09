@@ -2,34 +2,34 @@
 
 namespace CANHelper
 {
-    CanMsgHandler::CanMsgHandler(int CSPin) : mcp2515(CSPin) //initialiser list to pass specified CSPin to MCP2515 class
-    {
-        this->mcp2515.setBitrate(CAN_125KBPS, MCP_8MHZ); //Sets CAN at speed 500KBPS and Clock 8MHz (CHECK THIS)
+    CANHandler::CANHandler(int CSPin, CAN_SPEED canSpeed) : mcp2515(CSPin) { //initialiser list to pass specified CSPin to MCP2515 class
+        this->mcp2515.setBitrate(canSpeed, MCP_8MHZ); //Sets CAN at speed 500KBPS and Clock 8MHz (CHECK THIS)
         this->mcp2515.setNormalMode();
     }
     
     //void CanMsgHandler::DispatchMsg(can_frame msg) //handled in generated file
 
-    void CanMsgHandler::read()
-    {
-        if (this->mcp2515.readMessage(&(this->messageRead)) == MCP2515::ERROR_OK) { //To receive data (Poll Read). If true, message was received //https://how2electronics.com/interfacing-mcp2515-can-bus-module-with-arduino/
-            this->DispatchMsg(this->messageRead);
+    void CANHandler::read() {
+        if (this->mcp2515.readMessage(&(this->messageRead.raw)) == MCP2515::ERROR_OK) { //To receive data (Poll Read). If true, message was received //https://how2electronics.com/interfacing-mcp2515-can-bus-module-with-arduino/
+            this->DispatchMsg();
         }
     }
 
-    void CanMsgHandler::testRead(can_frame& testFrame)
-    {
-      memcpy(&(this->messageRead), &testFrame, sizeof(can_frame));
-      this->DispatchMsg(this->messageRead);
+    void CANHandler::testRead(can_frame& testFrame) {
+        memcpy(&(this->messageRead.raw), &testFrame, sizeof(can_frame));
+        this->DispatchMsg();
     }
     
-    void CanMsgHandler::send(Messages::CANMsg& toSend)
-    {
-        this->mcp2515.sendMessage((can_frame*)&toSend);
+    void CANHandler::send(CANHelperBuffer& toSend) {
+        this->mcp2515.sendMessage(&(toSend.raw));
     }
 
-    void CanMsgHandler::send(can_frame& toSend)
-    {
+    void CANHandler::send(can_frame& toSend) {
         this->mcp2515.sendMessage(&toSend);
+    }
+
+    void CANHandler::setCanMeta(CANHelperBuffer& buffer, canMeta meta) {
+        buffer.raw.can_id = meta.can_id;
+        buffer.raw.can_dlc = meta.can_dlc;
     }
 }
