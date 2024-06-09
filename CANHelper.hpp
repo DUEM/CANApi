@@ -1,34 +1,27 @@
-#include "mcp2515.h"
-#include "../../UseMsgList.hpp"
+#include "UseMsgList.hpp"
+#include "CanApiDraft.hpp"
 
-namespace CANHelper::Messages
-{
-    struct MsgMetadata
-	{
-		canid_t id;
-		__u8 dlc;
-        MsgMetadata(canid_t i, __u8 d) : id(i), dlc(d) {}
+#define LATEST_MSG_ID this->messageRead.raw.can_id //NOTE: only can be used in member functions of CanMsgHandlerBase and CanMsgHander
+                                                //(which extends CanMsgHandlerBase). This includes all the processMessage functions
+#define LATEST_MSG_ID this->messageRead.raw.can_dlc
+#define LATEST_MSG_DATA this->messageRead.payloadBuffer
+
+namespace CANHelper {
+	struct canMeta { //used in send functions to declare id and dlc for buffer
+        canid_t can_id;
+        __u8    can_dlc;
     };
 
-    struct CANMsg {
-        MsgMetadata metadata;
-        CANMsg(canid_t i, __u8 d) : metadata(i, d) {}
-    };//__attribute__((aligned(8))); //empty struct
-}
-namespace CANHelper
-{
-	class CanMsgHandler
-	{
+	class CANHandler : public CanMsgHandler {   
 	private:
 		MCP2515 mcp2515;
-        can_frame messageRead;
-
-        void DispatchMsg(can_frame msg); //internal function to cast and handle data
 	public:
-		CanMsgHandler(int CSPin);
-        void read(); //should be in loop
+		CANHandler(int CSPin, CAN_SPEED canSpeed);
+        void read(); //should be in loop. Polls the can controller for new messages
         void testRead(can_frame& testFrame);
-		void send(Messages::CANMsg& toSend);
+		void send(CANHelperBuffer& toSend);
         void send(can_frame& toSend);
+		void setCanMeta(CANHelperBuffer& buffer, canMeta meta);
+        void DispatchMsg(); //internal function to cast and handle data
 	};
 }
