@@ -1,3 +1,5 @@
+#ifndef CANHelper_INCLUDE_GUARD
+#define CANHelper_INCLUDE_GUARD
 #include "../../UseMsgList.hpp"
 #include "CanApiv10.hpp"
 
@@ -25,3 +27,4 @@ namespace CANHelper {
         void DispatchMsg(); //internal function to cast and handle data
 	};
 }
+#endif
