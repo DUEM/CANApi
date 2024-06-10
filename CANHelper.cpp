@@ -32,4 +32,13 @@ namespace CANHelper
         buffer.raw.can_id = meta.can_id;
         buffer.raw.can_dlc = meta.can_dlc;
     }
+
+    void CANHandler::reverseBytes(CANHelperBuffer& buffer) {
+        char temp;
+        for(char i = 0; i < buffer.raw.can_dlc; i++) {
+            temp = buffer[i];
+            buffer[i] = buffer[buffer.raw.can_dlc - i];
+            buffer[buffer.raw.can_dlc - i] = temp;
+        }
+    }
 }

@@ -134,26 +134,31 @@ namespace CANHelper {
 #endif
 #if defined(USE_MSG_Orion_CellVoltages) && ((USE_MSG_Orion_CellVoltages & 0b10) == 2)
 		case 0x6B0:
+			this->reverseBytes(LATEST_MSG);
 			this->processMessage(LATEST_MSG_DATA.as_Orion_CellVoltages);
 			break;
 #endif
 #if defined(USE_MSG_Orion_CellTempsDischargeChageCurrentLimit) && ((USE_MSG_Orion_CellTempsDischargeChageCurrentLimit & 0b10) == 2)
 		case 0x6B1:
+			this->reverseBytes(LATEST_MSG);
 			this->processMessage(LATEST_MSG_DATA.as_Orion_CellTempsDischargeChageCurrentLimit);
 			break;
 #endif
 #if defined(USE_MSG_Orion_CellVoltages) && ((USE_MSG_Orion_CellVoltages & 0b10) == 2)
 		case 0x700:
+			this->reverseBytes(LATEST_MSG);
 			this->processMessage(LATEST_MSG_DATA.as_Orion_CellVoltages);
 			break;
 #endif
 #if defined(USE_MSG_Orion_CellTempsDischargeChageCurrentLimit) && ((USE_MSG_Orion_CellTempsDischargeChageCurrentLimit & 0b10) == 2)
 		case 0x701:
+			this->reverseBytes(LATEST_MSG);
 			this->processMessage(LATEST_MSG_DATA.as_Orion_CellTempsDischargeChageCurrentLimit);
 			break;
 #endif
 #if defined(USE_MSG_Orion_CellTempsDischargeChageCurrentLimit) && ((USE_MSG_Orion_CellTempsDischargeChageCurrentLimit & 0b10) == 2)
 		case 0x702:
+			this->reverseBytes(LATEST_MSG);
 			this->processMessage(LATEST_MSG_DATA.as_Orion_CellTempsDischargeChageCurrentLimit);
 			break;
 #endif
