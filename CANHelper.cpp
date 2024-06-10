@@ -36,9 +36,9 @@ namespace CANHelper
     void CANHandler::reverseBytes(CANHelperBuffer& buffer) {
         char temp;
         for(char i = 0; i < buffer.raw.can_dlc; i++) {
-            temp = buffer[i];
-            buffer[i] = buffer[buffer.raw.can_dlc - i];
-            buffer[buffer.raw.can_dlc - i] = temp;
+            temp = buffer.raw.data[i];
+            buffer.raw.data[i] = buffer.raw.data[buffer.raw.can_dlc - i];
+            buffer.raw.data[buffer.raw.can_dlc - i] = temp;
         }
     }
 }
