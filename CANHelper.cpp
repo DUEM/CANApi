@@ -3,7 +3,7 @@
 namespace CANHelper
 {
     CANHandler::CANHandler(int CSPin, CAN_SPEED canSpeed) : mcp2515(CSPin) { //initialiser list to pass specified CSPin to MCP2515 class
-        this->mcp2515.setBitrate(canSpeed, MCP_8MHZ); //Sets CAN at speed 500KBPS and Clock 8MHz (CHECK THIS)
+        this->mcp2515.setBitrate(canSpeed, MCP_8MHZ); //Sets the CAN bus speed given (e.g. CAN_125KBPS), for an MCP2515 with an 8 MHz crystal
         this->mcp2515.setNormalMode();
     }
     
@@ -33,12 +33,14 @@ namespace CANHelper
         buffer.raw.can_dlc = meta.can_dlc;
     }
 
+    //Reverses the order of all can_dlc data bytes. Not used by the generated code: big-endian messages
+    //have more than one field, so DispatchMsg() swaps the bytes of each field separately instead
     void CANHandler::reverseBytes(CANHelperBuffer& buffer) {
-        char temp;
-        for(char i = 0; i < buffer.raw.can_dlc; i++) {
-            temp = buffer.raw.data[i];
-            buffer.raw.data[i] = buffer.raw.data[buffer.raw.can_dlc - i];
-            buffer.raw.data[buffer.raw.can_dlc - i] = temp;
+        __u8 last = buffer.raw.can_dlc - 1;
+        for (__u8 i = 0; i < buffer.raw.can_dlc / 2; i++) {
+            __u8 temp = buffer.raw.data[i];
+            buffer.raw.data[i] = buffer.raw.data[last - i];
+            buffer.raw.data[last - i] = temp;
         }
     }
 }

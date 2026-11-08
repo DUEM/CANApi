@@ -26,7 +26,7 @@ namespace CANHelper {
         void send(can_frame& toSend);
 		void setCanMeta(CANHelperBuffer& buffer, canMeta meta);
         void DispatchMsg(); //internal function to cast and handle data
-		void reverseBytes(CANHelperBuffer& buffer);
+		void reverseBytes(CANHelperBuffer& buffer); //reverses all can_dlc data bytes (whole payload, not per field)
 	};
 }
 #endif
