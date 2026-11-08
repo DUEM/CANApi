@@ -136,7 +136,7 @@ Releases are git tags. Each Telemetry2021 branch pins a commit through its submo
 |---|---|---|
 | `v0.4` | `CanApiv04.hpp/.cpp` | Older API: one struct per message deriving from `CANMsg`, free `processMessage()` functions. **Not source compatible with v1.0.** Telemetry2021 `PERI-DEVELOPMENT-TPB-1126`, `ESC-CODE`, `BWSC2023` and `DUSC2024` use `8d050b1`, the commit after `v0.4` |
 | `v1.0-beta` to `v1.0-beta.4` | `CanApiv10.hpp/.cpp` in the top folder | `CANHandler` class, member `processMessage()`, big-endian support (beta.3 onward). `v1.0-beta.4` (`fe308f7`) is used by Telemetry2021 `nick-22Library` |
-| `v1.0` (to be tagged) | `src/CANHelper.*`, `src/generated/CanApi.*` | The Nov 2026 fixes and the new layout. See the changelog below |
+| `v1.0` (TPB, 11/26) | `src/CANHelper.*`, `src/generated/CanApi.*` | The Nov 2026 fixes and the new layout. See the changelog below |
 
 ### Moving firmware from `v1.0-beta.4` to `v1.0`
 
