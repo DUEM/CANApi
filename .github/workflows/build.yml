@@ -1,0 +1,36 @@
+name: Build
+
+# Compiles CANApi for the Arduino Mega 2560 (the telemetry board) with avr-gcc and the real MCP2515 library.
+# CANTranslator's tests only compile with the laptop's g++ and a stub of the library.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  avr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: arduino/setup-arduino-cli@v2
+
+      - name: Install the AVR core and the MCP2515 library
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr
+          arduino-cli lib install autowp-mcp2515
+
+      - name: Build the Basic example (compiles and links)
+        run: >
+          arduino-cli compile --fqbn arduino:avr:mega --warnings all
+          --library "$GITHUB_WORKSPACE"
+          --build-property "compiler.cpp.extra_flags=-I$GITHUB_WORKSPACE/examples/Basic"
+          examples/Basic
+
+      - name: Compile with every message enabled
+        run: |
+          avr="$(ls -d "$HOME"/.arduino15/packages/arduino/hardware/avr/* | tail -1)"
+          export CXX="$(ls "$HOME"/.arduino15/packages/arduino/tools/avr-gcc/*/bin/avr-g++ | tail -1)"
+          export INCLUDES="-I $avr/cores/arduino -I $avr/variants/mega -I $avr/libraries/SPI/src -I $HOME/Arduino/libraries/autowp-mcp2515"
+          extras/ci/compile-all-messages.sh
