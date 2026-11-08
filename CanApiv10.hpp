@@ -16,7 +16,7 @@ namespace CANHelper::Messages {
 			uint8_t GpsYear;
 			uint8_t GpsFix;
 			uint8_t GpsFixquality;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Telemetry_SpeedAndAngle
@@ -27,7 +27,7 @@ namespace CANHelper::Messages {
 		struct SpeedAndAngle {
 			float GpsSpeed;
 			float GpsAngle;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Telemetry_Latitude
@@ -38,7 +38,7 @@ namespace CANHelper::Messages {
 		struct Latitude {
 			float GpsLatitude;
 			char GpsLat;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Telemetry_Longitude
@@ -49,7 +49,7 @@ namespace CANHelper::Messages {
 		struct Longitude {
 			float GpsLongitude;
 			char GpsLon;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Telemetry_AltitudeAndSatellites
@@ -60,7 +60,7 @@ namespace CANHelper::Messages {
 		struct AltitudeAndSatellites {
 			float GpsAltitude;
 			uint8_t GpsSatellites;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Telemetry_SystemStatusMessages
@@ -77,29 +77,7 @@ namespace CANHelper::Messages {
 			uint8_t Spare1;
 			uint8_t Spare2;
 			uint8_t Spare3;
-		} __attribute__((aligned(8)));
-		};
-#endif
-#ifdef USE_MSG_Testbed_TestbedEnvirocanIno
-#define CAN_ID_Testbed_TestbedEnvirocanIno 0x1B1
-#define CAN_DLC_Testbed_TestbedEnvirocanIno 8
-#define CAN_META_Testbed_TestbedEnvirocanIno {0x1B1, 8}
-	namespace Testbed {
-		struct TestbedEnvirocanIno {
-			float TempDegC;
-			float Humidity;
-		} __attribute__((aligned(8)));
-		};
-#endif
-#ifdef USE_MSG_Testbed_TestbedEnvirocanIno
-#define CAN_ID_Testbed_TestbedEnvirocanIno 0x1B2
-#define CAN_DLC_Testbed_TestbedEnvirocanIno 8
-#define CAN_META_Testbed_TestbedEnvirocanIno {0x1B2, 8}
-	namespace Testbed {
-		struct TestbedEnvirocanIno {
-			float HeatIndexDegC;
-			int32_t LdrReading;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_DriverControls_SpeedValCurrVal
@@ -110,7 +88,7 @@ namespace CANHelper::Messages {
 		struct SpeedValCurrVal {
 			float DriverSetSpeed;
 			float DriverSetCurrent;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_DriverControls_Maxbuscurrent
@@ -121,7 +99,7 @@ namespace CANHelper::Messages {
 		struct Maxbuscurrent {
 			float Zero;
 			float MaxBusCurrent;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Tritium_IdentificationInfo
@@ -132,21 +110,21 @@ namespace CANHelper::Messages {
 		struct IdentificationInfo {
 			uint32_t TritiumId;
 			uint32_t SerialNumber;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
-#ifdef USE_MSG_Tritium_StausInformation
-#define CAN_ID_Tritium_StausInformation 0x601
-#define CAN_DLC_Tritium_StausInformation 8
-#define CAN_META_Tritium_StausInformation {0x601, 8}
+#ifdef USE_MSG_Tritium_StatusInformation
+#define CAN_ID_Tritium_StatusInformation 0x601
+#define CAN_DLC_Tritium_StatusInformation 8
+#define CAN_META_Tritium_StatusInformation {0x601, 8}
 	namespace Tritium {
-		struct StausInformation {
+		struct StatusInformation {
 			uint16_t LimitFlags;
 			uint16_t ErrorFlags;
 			uint16_t ActiveMotor;
 			uint8_t TransmitErrorCount;
 			uint8_t ReceiveErrorCount;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Tritium_BusMeasurement
@@ -157,7 +135,7 @@ namespace CANHelper::Messages {
 		struct BusMeasurement {
 			float BusVoltage;
 			float BusCurrent;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Tritium_Velocity
@@ -168,7 +146,7 @@ namespace CANHelper::Messages {
 		struct Velocity {
 			float MotorVelocity;
 			float VehicleVelocity;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Tritium_PhaseCurrent
@@ -179,7 +157,7 @@ namespace CANHelper::Messages {
 		struct PhaseCurrent {
 			float PhaseBCurrent;
 			float PhaseCCurrent;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Tritium_MotorVoltageVector
@@ -190,7 +168,7 @@ namespace CANHelper::Messages {
 		struct MotorVoltageVector {
 			float VectVoltImag;
 			float VectVoltReal;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Tritium_MotorCurrentVector
@@ -201,7 +179,7 @@ namespace CANHelper::Messages {
 		struct MotorCurrentVector {
 			float VectCurrImag;
 			float VectCurrReal;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Tritium_MotorBackemfVector
@@ -212,7 +190,7 @@ namespace CANHelper::Messages {
 		struct MotorBackemfVector {
 			float PeakBackEmfPhaseToNeutral;
 			float BackEmfD;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Tritium_Rail_15V
@@ -223,7 +201,7 @@ namespace CANHelper::Messages {
 		struct Rail_15V {
 			float Reserved;
 			float FifteenVSupply;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Tritium_Rail_3_3VAnd1_9V
@@ -234,18 +212,7 @@ namespace CANHelper::Messages {
 		struct Rail_3_3VAnd1_9V {
 			float OneNineVSupply;
 			float ThreeThreeVSupply;
-		} __attribute__((aligned(8)));
-		};
-#endif
-#ifdef USE_MSG_Tritium_Reserved
-#define CAN_ID_Tritium_Reserved 0x60A
-#define CAN_DLC_Tritium_Reserved 8
-#define CAN_META_Tritium_Reserved {0x60A, 8}
-	namespace Tritium {
-		struct Reserved {
-			float Reserved;
-			float Reserved;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Tritium_SinkMotorTemperature
@@ -256,7 +223,7 @@ namespace CANHelper::Messages {
 		struct SinkMotorTemperature {
 			float MotorTemp;
 			float HeatSinkTemp;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Tritium_DspBoardTemperature
@@ -267,18 +234,7 @@ namespace CANHelper::Messages {
 		struct DspBoardTemperature {
 			float DspBoardTemp;
 			float Reserved;
-		} __attribute__((aligned(8)));
-		};
-#endif
-#ifdef USE_MSG_Tritium_Reserved
-#define CAN_ID_Tritium_Reserved 0x60D
-#define CAN_DLC_Tritium_Reserved 8
-#define CAN_META_Tritium_Reserved {0x60D, 8}
-	namespace Tritium {
-		struct Reserved {
-			float Reserved;
-			float Reserved;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Tritium_OdoBusAmphours
@@ -289,7 +245,7 @@ namespace CANHelper::Messages {
 		struct OdoBusAmphours {
 			float Odometer;
 			float DcBusAmpHours;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Tritium_SlipSpeedMeasurement
@@ -300,77 +256,77 @@ namespace CANHelper::Messages {
 		struct SlipSpeedMeasurement {
 			float Reserved;
 			float SlipSpeed;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
-#ifdef USE_MSG_Orion_CellVoltages
-#define CAN_ID_Orion_CellVoltages 0x6B0
-#define CAN_DLC_Orion_CellVoltages 7
-#define CAN_META_Orion_CellVoltages {0x6B0, 7}
+#ifdef USE_MSG_Orion_PackParametersDefaultId
+#define CAN_ID_Orion_PackParametersDefaultId 0x6B0
+#define CAN_DLC_Orion_PackParametersDefaultId 7
+#define CAN_META_Orion_PackParametersDefaultId {0x6B0, 7}
 	namespace Orion {
-		struct CellVoltages {
+		struct PackParametersDefaultId {
 			uint16_t PackCurrent;
 			uint16_t PackInstVoltage;
 			uint8_t PackSoc;
 			uint16_t RelayState;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
-#ifdef USE_MSG_Orion_CellTempsDischargeChageCurrentLimit
-#define CAN_ID_Orion_CellTempsDischargeChageCurrentLimit 0x6B1
-#define CAN_DLC_Orion_CellTempsDischargeChageCurrentLimit 7
-#define CAN_META_Orion_CellTempsDischargeChageCurrentLimit {0x6B1, 7}
+#ifdef USE_MSG_Orion_CellTempsDclDefaultId
+#define CAN_ID_Orion_CellTempsDclDefaultId 0x6B1
+#define CAN_DLC_Orion_CellTempsDclDefaultId 7
+#define CAN_META_Orion_CellTempsDclDefaultId {0x6B1, 7}
 	namespace Orion {
-		struct CellTempsDischargeChageCurrentLimit {
+		struct CellTempsDclDefaultId {
 			int16_t PackDcl;
 			int16_t Unknown;
 			int8_t HighTemperatureSensor;
 			int8_t LowTemperatureSensors;
 			int8_t Blank;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
-#ifdef USE_MSG_Orion_CellVoltages
-#define CAN_ID_Orion_CellVoltages 0x700
-#define CAN_DLC_Orion_CellVoltages 7
-#define CAN_META_Orion_CellVoltages {0x700, 7}
+#ifdef USE_MSG_Orion_PackParameters
+#define CAN_ID_Orion_PackParameters 0x700
+#define CAN_DLC_Orion_PackParameters 7
+#define CAN_META_Orion_PackParameters {0x700, 7}
 	namespace Orion {
-		struct CellVoltages {
+		struct PackParameters {
 			uint16_t PackCurrent;
 			uint16_t PackInstVoltage;
 			uint8_t PackSoc;
 			uint16_t RelayState;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
-#ifdef USE_MSG_Orion_CellTempsDischargeChageCurrentLimit
-#define CAN_ID_Orion_CellTempsDischargeChageCurrentLimit 0x701
-#define CAN_DLC_Orion_CellTempsDischargeChageCurrentLimit 7
-#define CAN_META_Orion_CellTempsDischargeChageCurrentLimit {0x701, 7}
+#ifdef USE_MSG_Orion_CellTempsDcl
+#define CAN_ID_Orion_CellTempsDcl 0x701
+#define CAN_DLC_Orion_CellTempsDcl 7
+#define CAN_META_Orion_CellTempsDcl {0x701, 7}
 	namespace Orion {
-		struct CellTempsDischargeChageCurrentLimit {
+		struct CellTempsDcl {
 			int16_t PackDcl;
 			int16_t Unknown;
 			int8_t HighTemperatureSensor;
 			int8_t LowTemperatureSensors;
 			int8_t Blank;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
-#ifdef USE_MSG_Orion_CellTempsDischargeChageCurrentLimit
-#define CAN_ID_Orion_CellTempsDischargeChageCurrentLimit 0x702
-#define CAN_DLC_Orion_CellTempsDischargeChageCurrentLimit 7
-#define CAN_META_Orion_CellTempsDischargeChageCurrentLimit {0x702, 7}
+#ifdef USE_MSG_Orion_CellVoltages
+#define CAN_ID_Orion_CellVoltages 0x702
+#define CAN_DLC_Orion_CellVoltages 7
+#define CAN_META_Orion_CellVoltages {0x702, 7}
 	namespace Orion {
-		struct CellTempsDischargeChageCurrentLimit {
+		struct CellVoltages {
 			int8_t MinCellVoltage;
 			int8_t MaxCellVoltage;
 			int8_t PackKwPower;
 			int8_t ReqFanSpeed;
 			int8_t IntakeTemperature;
-			int8_t Blank;
-			int8_t Blank;
-		} __attribute__((aligned(8)));
+			int8_t BlankA;
+			int8_t BlankB;
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Telemetry_MpptPollJaved
@@ -380,7 +336,7 @@ namespace CANHelper::Messages {
 	namespace Telemetry {
 		struct MpptPollJaved {
 			int8_t Blank;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Telemetry_MpptPollWoof
@@ -390,7 +346,7 @@ namespace CANHelper::Messages {
 	namespace Telemetry {
 		struct MpptPollWoof {
 			int8_t Blank;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Mppt_Javed
@@ -406,7 +362,7 @@ namespace CANHelper::Messages {
 			uint8_t MsbVoltageOut;
 			uint8_t LsbVoltageOut;
 			uint8_t AmbientTemperature;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 #ifdef USE_MSG_Mppt_Woof
@@ -422,7 +378,7 @@ namespace CANHelper::Messages {
 			uint8_t MsbVoltageOut;
 			uint8_t LsbVoltageOut;
 			uint8_t AmbientTemperature;
-		} __attribute__((aligned(8)));
+		} __attribute__((packed, aligned(8)));
 		};
 #endif
 	union CastedCANPayload {
@@ -444,12 +400,6 @@ namespace CANHelper::Messages {
 #if defined(USE_MSG_Telemetry_SystemStatusMessages)
 		Telemetry::SystemStatusMessages as_Telemetry_SystemStatusMessages;
 #endif
-#if defined(USE_MSG_Testbed_TestbedEnvirocanIno)
-		Testbed::TestbedEnvirocanIno as_Testbed_TestbedEnvirocanIno;
-#endif
-#if defined(USE_MSG_Testbed_TestbedEnvirocanIno)
-		Testbed::TestbedEnvirocanIno as_Testbed_TestbedEnvirocanIno;
-#endif
 #if defined(USE_MSG_DriverControls_SpeedValCurrVal)
 		DriverControls::SpeedValCurrVal as_DriverControls_SpeedValCurrVal;
 #endif
@@ -459,8 +409,8 @@ namespace CANHelper::Messages {
 #if defined(USE_MSG_Tritium_IdentificationInfo)
 		Tritium::IdentificationInfo as_Tritium_IdentificationInfo;
 #endif
-#if defined(USE_MSG_Tritium_StausInformation)
-		Tritium::StausInformation as_Tritium_StausInformation;
+#if defined(USE_MSG_Tritium_StatusInformation)
+		Tritium::StatusInformation as_Tritium_StatusInformation;
 #endif
 #if defined(USE_MSG_Tritium_BusMeasurement)
 		Tritium::BusMeasurement as_Tritium_BusMeasurement;
@@ -486,17 +436,11 @@ namespace CANHelper::Messages {
 #if defined(USE_MSG_Tritium_Rail_3_3VAnd1_9V)
 		Tritium::Rail_3_3VAnd1_9V as_Tritium_Rail_3_3VAnd1_9V;
 #endif
-#if defined(USE_MSG_Tritium_Reserved)
-		Tritium::Reserved as_Tritium_Reserved;
-#endif
 #if defined(USE_MSG_Tritium_SinkMotorTemperature)
 		Tritium::SinkMotorTemperature as_Tritium_SinkMotorTemperature;
 #endif
 #if defined(USE_MSG_Tritium_DspBoardTemperature)
 		Tritium::DspBoardTemperature as_Tritium_DspBoardTemperature;
-#endif
-#if defined(USE_MSG_Tritium_Reserved)
-		Tritium::Reserved as_Tritium_Reserved;
 #endif
 #if defined(USE_MSG_Tritium_OdoBusAmphours)
 		Tritium::OdoBusAmphours as_Tritium_OdoBusAmphours;
@@ -504,20 +448,20 @@ namespace CANHelper::Messages {
 #if defined(USE_MSG_Tritium_SlipSpeedMeasurement)
 		Tritium::SlipSpeedMeasurement as_Tritium_SlipSpeedMeasurement;
 #endif
+#if defined(USE_MSG_Orion_PackParametersDefaultId)
+		Orion::PackParametersDefaultId as_Orion_PackParametersDefaultId;
+#endif
+#if defined(USE_MSG_Orion_CellTempsDclDefaultId)
+		Orion::CellTempsDclDefaultId as_Orion_CellTempsDclDefaultId;
+#endif
+#if defined(USE_MSG_Orion_PackParameters)
+		Orion::PackParameters as_Orion_PackParameters;
+#endif
+#if defined(USE_MSG_Orion_CellTempsDcl)
+		Orion::CellTempsDcl as_Orion_CellTempsDcl;
+#endif
 #if defined(USE_MSG_Orion_CellVoltages)
 		Orion::CellVoltages as_Orion_CellVoltages;
-#endif
-#if defined(USE_MSG_Orion_CellTempsDischargeChageCurrentLimit)
-		Orion::CellTempsDischargeChageCurrentLimit as_Orion_CellTempsDischargeChageCurrentLimit;
-#endif
-#if defined(USE_MSG_Orion_CellVoltages)
-		Orion::CellVoltages as_Orion_CellVoltages;
-#endif
-#if defined(USE_MSG_Orion_CellTempsDischargeChageCurrentLimit)
-		Orion::CellTempsDischargeChageCurrentLimit as_Orion_CellTempsDischargeChageCurrentLimit;
-#endif
-#if defined(USE_MSG_Orion_CellTempsDischargeChageCurrentLimit)
-		Orion::CellTempsDischargeChageCurrentLimit as_Orion_CellTempsDischargeChageCurrentLimit;
 #endif
 #if defined(USE_MSG_Telemetry_MpptPollJaved)
 		Telemetry::MpptPollJaved as_Telemetry_MpptPollJaved;
@@ -533,7 +477,7 @@ namespace CANHelper::Messages {
 #endif
 	};
 }
- namespace CANHelper {
+namespace CANHelper {
 	union CANHelperBuffer { //to try and reduce memory copies (waste of instructions)
 		can_frame raw;
 		struct {
@@ -541,115 +485,103 @@ namespace CANHelper::Messages {
 			Messages::CastedCANPayload payloadBuffer;
 		};
 	};
-	
+
 	class CanMsgHandler {
 	protected:
 		CANHelperBuffer messageRead; //holds the latest received message from the CAN bus
 	public:
 		CanMsgHandler() = default;
-#if defined(USE_MSG_Telemetry_TimeAndFix) && ((USE_MSG_Telemetry_TimeAndFix & 0b10) == 2)
+#if defined(USE_MSG_Telemetry_TimeAndFix) && (((USE_MSG_Telemetry_TimeAndFix + 0) & 0b10) == 2)
 		void processMessage(Messages::Telemetry::TimeAndFix& msg);
 #endif
-#if defined(USE_MSG_Telemetry_SpeedAndAngle) && ((USE_MSG_Telemetry_SpeedAndAngle & 0b10) == 2)
+#if defined(USE_MSG_Telemetry_SpeedAndAngle) && (((USE_MSG_Telemetry_SpeedAndAngle + 0) & 0b10) == 2)
 		void processMessage(Messages::Telemetry::SpeedAndAngle& msg);
 #endif
-#if defined(USE_MSG_Telemetry_Latitude) && ((USE_MSG_Telemetry_Latitude & 0b10) == 2)
+#if defined(USE_MSG_Telemetry_Latitude) && (((USE_MSG_Telemetry_Latitude + 0) & 0b10) == 2)
 		void processMessage(Messages::Telemetry::Latitude& msg);
 #endif
-#if defined(USE_MSG_Telemetry_Longitude) && ((USE_MSG_Telemetry_Longitude & 0b10) == 2)
+#if defined(USE_MSG_Telemetry_Longitude) && (((USE_MSG_Telemetry_Longitude + 0) & 0b10) == 2)
 		void processMessage(Messages::Telemetry::Longitude& msg);
 #endif
-#if defined(USE_MSG_Telemetry_AltitudeAndSatellites) && ((USE_MSG_Telemetry_AltitudeAndSatellites & 0b10) == 2)
+#if defined(USE_MSG_Telemetry_AltitudeAndSatellites) && (((USE_MSG_Telemetry_AltitudeAndSatellites + 0) & 0b10) == 2)
 		void processMessage(Messages::Telemetry::AltitudeAndSatellites& msg);
 #endif
-#if defined(USE_MSG_Telemetry_SystemStatusMessages) && ((USE_MSG_Telemetry_SystemStatusMessages & 0b10) == 2)
+#if defined(USE_MSG_Telemetry_SystemStatusMessages) && (((USE_MSG_Telemetry_SystemStatusMessages + 0) & 0b10) == 2)
 		void processMessage(Messages::Telemetry::SystemStatusMessages& msg);
 #endif
-#if defined(USE_MSG_Testbed_TestbedEnvirocanIno) && ((USE_MSG_Testbed_TestbedEnvirocanIno & 0b10) == 2)
-		void processMessage(Messages::Testbed::TestbedEnvirocanIno& msg);
-#endif
-#if defined(USE_MSG_Testbed_TestbedEnvirocanIno) && ((USE_MSG_Testbed_TestbedEnvirocanIno & 0b10) == 2)
-		void processMessage(Messages::Testbed::TestbedEnvirocanIno& msg);
-#endif
-#if defined(USE_MSG_DriverControls_SpeedValCurrVal) && ((USE_MSG_DriverControls_SpeedValCurrVal & 0b10) == 2)
+#if defined(USE_MSG_DriverControls_SpeedValCurrVal) && (((USE_MSG_DriverControls_SpeedValCurrVal + 0) & 0b10) == 2)
 		void processMessage(Messages::DriverControls::SpeedValCurrVal& msg);
 #endif
-#if defined(USE_MSG_DriverControls_Maxbuscurrent) && ((USE_MSG_DriverControls_Maxbuscurrent & 0b10) == 2)
+#if defined(USE_MSG_DriverControls_Maxbuscurrent) && (((USE_MSG_DriverControls_Maxbuscurrent + 0) & 0b10) == 2)
 		void processMessage(Messages::DriverControls::Maxbuscurrent& msg);
 #endif
-#if defined(USE_MSG_Tritium_IdentificationInfo) && ((USE_MSG_Tritium_IdentificationInfo & 0b10) == 2)
+#if defined(USE_MSG_Tritium_IdentificationInfo) && (((USE_MSG_Tritium_IdentificationInfo + 0) & 0b10) == 2)
 		void processMessage(Messages::Tritium::IdentificationInfo& msg);
 #endif
-#if defined(USE_MSG_Tritium_StausInformation) && ((USE_MSG_Tritium_StausInformation & 0b10) == 2)
-		void processMessage(Messages::Tritium::StausInformation& msg);
+#if defined(USE_MSG_Tritium_StatusInformation) && (((USE_MSG_Tritium_StatusInformation + 0) & 0b10) == 2)
+		void processMessage(Messages::Tritium::StatusInformation& msg);
 #endif
-#if defined(USE_MSG_Tritium_BusMeasurement) && ((USE_MSG_Tritium_BusMeasurement & 0b10) == 2)
+#if defined(USE_MSG_Tritium_BusMeasurement) && (((USE_MSG_Tritium_BusMeasurement + 0) & 0b10) == 2)
 		void processMessage(Messages::Tritium::BusMeasurement& msg);
 #endif
-#if defined(USE_MSG_Tritium_Velocity) && ((USE_MSG_Tritium_Velocity & 0b10) == 2)
+#if defined(USE_MSG_Tritium_Velocity) && (((USE_MSG_Tritium_Velocity + 0) & 0b10) == 2)
 		void processMessage(Messages::Tritium::Velocity& msg);
 #endif
-#if defined(USE_MSG_Tritium_PhaseCurrent) && ((USE_MSG_Tritium_PhaseCurrent & 0b10) == 2)
+#if defined(USE_MSG_Tritium_PhaseCurrent) && (((USE_MSG_Tritium_PhaseCurrent + 0) & 0b10) == 2)
 		void processMessage(Messages::Tritium::PhaseCurrent& msg);
 #endif
-#if defined(USE_MSG_Tritium_MotorVoltageVector) && ((USE_MSG_Tritium_MotorVoltageVector & 0b10) == 2)
+#if defined(USE_MSG_Tritium_MotorVoltageVector) && (((USE_MSG_Tritium_MotorVoltageVector + 0) & 0b10) == 2)
 		void processMessage(Messages::Tritium::MotorVoltageVector& msg);
 #endif
-#if defined(USE_MSG_Tritium_MotorCurrentVector) && ((USE_MSG_Tritium_MotorCurrentVector & 0b10) == 2)
+#if defined(USE_MSG_Tritium_MotorCurrentVector) && (((USE_MSG_Tritium_MotorCurrentVector + 0) & 0b10) == 2)
 		void processMessage(Messages::Tritium::MotorCurrentVector& msg);
 #endif
-#if defined(USE_MSG_Tritium_MotorBackemfVector) && ((USE_MSG_Tritium_MotorBackemfVector & 0b10) == 2)
+#if defined(USE_MSG_Tritium_MotorBackemfVector) && (((USE_MSG_Tritium_MotorBackemfVector + 0) & 0b10) == 2)
 		void processMessage(Messages::Tritium::MotorBackemfVector& msg);
 #endif
-#if defined(USE_MSG_Tritium_Rail_15V) && ((USE_MSG_Tritium_Rail_15V & 0b10) == 2)
+#if defined(USE_MSG_Tritium_Rail_15V) && (((USE_MSG_Tritium_Rail_15V + 0) & 0b10) == 2)
 		void processMessage(Messages::Tritium::Rail_15V& msg);
 #endif
-#if defined(USE_MSG_Tritium_Rail_3_3VAnd1_9V) && ((USE_MSG_Tritium_Rail_3_3VAnd1_9V & 0b10) == 2)
+#if defined(USE_MSG_Tritium_Rail_3_3VAnd1_9V) && (((USE_MSG_Tritium_Rail_3_3VAnd1_9V + 0) & 0b10) == 2)
 		void processMessage(Messages::Tritium::Rail_3_3VAnd1_9V& msg);
 #endif
-#if defined(USE_MSG_Tritium_Reserved) && ((USE_MSG_Tritium_Reserved & 0b10) == 2)
-		void processMessage(Messages::Tritium::Reserved& msg);
-#endif
-#if defined(USE_MSG_Tritium_SinkMotorTemperature) && ((USE_MSG_Tritium_SinkMotorTemperature & 0b10) == 2)
+#if defined(USE_MSG_Tritium_SinkMotorTemperature) && (((USE_MSG_Tritium_SinkMotorTemperature + 0) & 0b10) == 2)
 		void processMessage(Messages::Tritium::SinkMotorTemperature& msg);
 #endif
-#if defined(USE_MSG_Tritium_DspBoardTemperature) && ((USE_MSG_Tritium_DspBoardTemperature & 0b10) == 2)
+#if defined(USE_MSG_Tritium_DspBoardTemperature) && (((USE_MSG_Tritium_DspBoardTemperature + 0) & 0b10) == 2)
 		void processMessage(Messages::Tritium::DspBoardTemperature& msg);
 #endif
-#if defined(USE_MSG_Tritium_Reserved) && ((USE_MSG_Tritium_Reserved & 0b10) == 2)
-		void processMessage(Messages::Tritium::Reserved& msg);
-#endif
-#if defined(USE_MSG_Tritium_OdoBusAmphours) && ((USE_MSG_Tritium_OdoBusAmphours & 0b10) == 2)
+#if defined(USE_MSG_Tritium_OdoBusAmphours) && (((USE_MSG_Tritium_OdoBusAmphours + 0) & 0b10) == 2)
 		void processMessage(Messages::Tritium::OdoBusAmphours& msg);
 #endif
-#if defined(USE_MSG_Tritium_SlipSpeedMeasurement) && ((USE_MSG_Tritium_SlipSpeedMeasurement & 0b10) == 2)
+#if defined(USE_MSG_Tritium_SlipSpeedMeasurement) && (((USE_MSG_Tritium_SlipSpeedMeasurement + 0) & 0b10) == 2)
 		void processMessage(Messages::Tritium::SlipSpeedMeasurement& msg);
 #endif
-#if defined(USE_MSG_Orion_CellVoltages) && ((USE_MSG_Orion_CellVoltages & 0b10) == 2)
+#if defined(USE_MSG_Orion_PackParametersDefaultId) && (((USE_MSG_Orion_PackParametersDefaultId + 0) & 0b10) == 2)
+		void processMessage(Messages::Orion::PackParametersDefaultId& msg);
+#endif
+#if defined(USE_MSG_Orion_CellTempsDclDefaultId) && (((USE_MSG_Orion_CellTempsDclDefaultId + 0) & 0b10) == 2)
+		void processMessage(Messages::Orion::CellTempsDclDefaultId& msg);
+#endif
+#if defined(USE_MSG_Orion_PackParameters) && (((USE_MSG_Orion_PackParameters + 0) & 0b10) == 2)
+		void processMessage(Messages::Orion::PackParameters& msg);
+#endif
+#if defined(USE_MSG_Orion_CellTempsDcl) && (((USE_MSG_Orion_CellTempsDcl + 0) & 0b10) == 2)
+		void processMessage(Messages::Orion::CellTempsDcl& msg);
+#endif
+#if defined(USE_MSG_Orion_CellVoltages) && (((USE_MSG_Orion_CellVoltages + 0) & 0b10) == 2)
 		void processMessage(Messages::Orion::CellVoltages& msg);
 #endif
-#if defined(USE_MSG_Orion_CellTempsDischargeChageCurrentLimit) && ((USE_MSG_Orion_CellTempsDischargeChageCurrentLimit & 0b10) == 2)
-		void processMessage(Messages::Orion::CellTempsDischargeChageCurrentLimit& msg);
-#endif
-#if defined(USE_MSG_Orion_CellVoltages) && ((USE_MSG_Orion_CellVoltages & 0b10) == 2)
-		void processMessage(Messages::Orion::CellVoltages& msg);
-#endif
-#if defined(USE_MSG_Orion_CellTempsDischargeChageCurrentLimit) && ((USE_MSG_Orion_CellTempsDischargeChageCurrentLimit & 0b10) == 2)
-		void processMessage(Messages::Orion::CellTempsDischargeChageCurrentLimit& msg);
-#endif
-#if defined(USE_MSG_Orion_CellTempsDischargeChageCurrentLimit) && ((USE_MSG_Orion_CellTempsDischargeChageCurrentLimit & 0b10) == 2)
-		void processMessage(Messages::Orion::CellTempsDischargeChageCurrentLimit& msg);
-#endif
-#if defined(USE_MSG_Telemetry_MpptPollJaved) && ((USE_MSG_Telemetry_MpptPollJaved & 0b10) == 2)
+#if defined(USE_MSG_Telemetry_MpptPollJaved) && (((USE_MSG_Telemetry_MpptPollJaved + 0) & 0b10) == 2)
 		void processMessage(Messages::Telemetry::MpptPollJaved& msg);
 #endif
-#if defined(USE_MSG_Telemetry_MpptPollWoof) && ((USE_MSG_Telemetry_MpptPollWoof & 0b10) == 2)
+#if defined(USE_MSG_Telemetry_MpptPollWoof) && (((USE_MSG_Telemetry_MpptPollWoof + 0) & 0b10) == 2)
 		void processMessage(Messages::Telemetry::MpptPollWoof& msg);
 #endif
-#if defined(USE_MSG_Mppt_Javed) && ((USE_MSG_Mppt_Javed & 0b10) == 2)
+#if defined(USE_MSG_Mppt_Javed) && (((USE_MSG_Mppt_Javed + 0) & 0b10) == 2)
 		void processMessage(Messages::Mppt::Javed& msg);
 #endif
-#if defined(USE_MSG_Mppt_Woof) && ((USE_MSG_Mppt_Woof & 0b10) == 2)
+#if defined(USE_MSG_Mppt_Woof) && (((USE_MSG_Mppt_Woof + 0) & 0b10) == 2)
 		void processMessage(Messages::Mppt::Woof& msg);
 #endif
 #ifdef PROCESS_ALL_MSG
